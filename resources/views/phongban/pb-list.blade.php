@@ -4,31 +4,7 @@
                         <div class="top-action mb-2">
                             {{-- Thêm phòng ban --}}
                             <div class="add-new">
-                                <button type="button" class="btn btn-outline-primary me-2"  data-toggle="modal" data-target="#them_phongban"><i class="fa-solid fa-plus"></i> Thêm Phòng Ban</button>
-                                <div class="modal fade" id="them_phongban" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <form action="themphongban" method="POST" id="them-phong-ban" role="form">
-                                        @csrf
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Thêm Phòng Ban</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body new-pb form-flex">
-                                                <div class="row-f f-50"><input type="text" id="new_ma_phong_ban" name="new_ma_phong_ban" value="" placeholder="Nhập mã phòng ban *" required></div>
-                                                <div class="row-f f-50"><input type="text" id ="new_ten_phong_ban" name="new_ten_phong_ban" value="" placeholder="Nhập tên phòng ban *" required></div>
-                                                <div class="row-f f-100"><textarea name="new_mo_ta" id="new_mo_ta" cols="30" rows="5" value="" placeholder="Nhập mô tả *"  required></textarea></div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                <button type="submit" class="btn btn-primary them-phong-ban" >Lưu thay đổi</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <a href="{{ url('phongban/themphongban') }}" target="_blank" class="btn btn-outline-primary me-2 btn-add-new"><i class="fa-solid fa-plus"></i> Thêm Phòng Ban</a>
                             </div>
                             {{-- - --}}
                         <div class="input-group live-search">
@@ -90,15 +66,7 @@
             </div>
             <!-- End of Main Content -->
         
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Quản lý nhân sự 2023</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            
             
         </div>
         <!-- End of Content Wrapper -->

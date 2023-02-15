@@ -8,10 +8,10 @@
             <div class="row align-items-center">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
-                        <h3 class="page-title">Add Students</h3>
+                        <h3 class="page-title">Thêm Phòng Ban</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="students.html">Student</a></li>
-                            <li class="breadcrumb-item active">Add Students</li>
+                            <li class="breadcrumb-item"><a href="students.html">Phòng Ban</a></li>
+                            <li class="breadcrumb-item active">Thêm Phòng Ban</li>
                         </ul>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="form-title student-info">Student Information <span><a
+                                    <h5 class="form-title student-info">Thông Tin Phòng Ban <span><a
                                                 href="javascript:;"><i
                                                     class="feather-more-vertical"></i></a></span></h5>
                                 </div>

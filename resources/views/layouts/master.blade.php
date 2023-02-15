@@ -117,7 +117,15 @@
                      <div class="col-xl-12 col-md-12">
                        
                         @yield('content')
-                     
+                     <!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Quản lý nhân sự 2023</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
                     </div>
         
                     <!-- Content Row -->
@@ -157,17 +165,7 @@
     <div class="cv-spinner">
       <span class="spinner"></span>
     </div>
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Quản lý nhân sự 2023</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-            
-        </div>
+ </div>
         <!-- End of Content Wrapper -->
 
     </div>
@@ -176,10 +174,11 @@
     
     
     
-    <div id="overlay">
-        <div class="cv-spinner">
-          <span class="spinner"></span>
-        </div>
+
+    
+        <!-- Footer -->
+        
+        <!-- End of Footer -->
 </body>
 
     <!-- Bootstrap core JavaScript-->
