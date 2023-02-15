@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\UserProfileController;
 use Illuminate\Contracts\Support\JsonableInterface;
 use App\Http\Controllers\PhongBanController;
 use App\Http\Controllers\ChucDanhController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,7 @@ Route::post('/chucdanh/suacd/{cd}',[ChucDanhController::class, 'cdUpdate']);
 Route::get('/chucdanh/themcd',[ChucDanhController::class, 'cdAddView']);
 Route::post('/chucdanh/themcd', [ChucDanhController::class, 'cdAdd'])->name('chucdanh.them');
 Route::delete('/chucdanh/xoacd/{id}', [ChucDanhController::class, 'cdDelete']);
+
+// -----------------------------------------Search-----------------------------------------
+Route::get('/tim-kiem',[SearchController::class, 'searchView']);
+Route::get('ket-qua-tim-kiem', [SearchController::class, 'searchResult'])->name('search.result');

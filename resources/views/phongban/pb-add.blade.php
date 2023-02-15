@@ -71,15 +71,4 @@
         </div>
     </div>
 </div>
-<script>
-//     $(document).ready(function(){
-// $('#thempb').submit(function(e){
-// var mapb = $('#mapb').val();
-// var tenpb = $('#tenpb').val();
-// var sdtpb = $('#sdtpb').val();
-// var thongtinpb = $('#thongtinpb').val();
-// });
-// $.post()
-//     });
-</script>
 @endsection

@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($phongBan as $pb)
+                                @foreach ($result as $pb)
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$pb->ma_phong_ban}}</td>
@@ -53,7 +53,7 @@
                                @endforeach
                             </tbody>
                         </table>
-                        {!! $phongBan->links() !!}
+                        {!! $result->links() !!}
                      </div>
                      
                     </div>
