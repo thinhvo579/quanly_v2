@@ -18,7 +18,7 @@
        
         </div>
     </div>
-    
+
     
     <table class="table-full-width table"  id="fid_table">
         <thead class="thead-primary">
@@ -32,31 +32,35 @@
             </tr>
         </thead>
         <tbody>
-      
-            @foreach ($nhanVien as $nv)
-        
-            <tr>
-                <td>{{++$i}}</td>
-                <td>{{$nv->ma_nhan_vien}}</td>
-                <td>{{$nv->ten_nhan_vien}}</td>
-                <td>{{$nv->gioi_tinh}}</td>
-                <td>{{$nv->ngay_sinh}}</td>
-                <td>
-                    <div class="actions ">
-                    <a href="{{ url('nhanvien/xemnv/'.$nv->id)}}" class="btn btn-sm bg-success-light me-2 ">
-                        <i class="feather-eye"></i>
-                    </a>
-                    <a href="{{ url('nhanvien/suanv/'.$nv->id)}}" class="btn btn-sm bg-danger-light">
-                        <i class="feather-edit"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="btn btn-sm bg-danger-light xoa-nv" data-id="{{$nv->id}}" id="show-popup-confirm"  data-toggle="modal" data-target="#xoa-nv">
-                        <i class="feather-trash"></i>
-                    </a>
-                </div>
-            </td>
-            </tr>
-            {{-- Hiển thị phòng ban --}}
-           @endforeach
+           
+            @if (count($nhanVien) != 0)
+                @foreach ($nhanVien as $nv)
+            
+                <tr>
+                    <td>{{++$i}}</td>
+                    <td>{{$nv->ma_nhan_vien}}</td>
+                    <td>{{$nv->ten_nhan_vien}}</td>
+                    <td>{{$nv->gioi_tinh}}</td>
+                    <td>{{$nv->ngay_sinh}}</td>
+                    <td>
+                        <div class="actions ">
+                            <a href="{{ url('nhanvien/xemnv/'.$nv->id)}}" class="btn btn-sm bg-success-light me-2 ">
+                                <i class="feather-eye"></i>
+                            </a>
+                            <a href="{{ url('nhanvien/suanv/'.$nv->id)}}" class="btn btn-sm bg-danger-light">
+                                <i class="feather-edit"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="btn btn-sm bg-danger-light xoa-nv" data-id="{{$nv->id}}" id="show-popup-confirm"  data-toggle="modal" data-target="#xoa-nv">
+                                <i class="feather-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+           @else
+<p>Dữ liệu hiện đang trống!</p>
+               
+           @endif
         </tbody>
     </table>
     {!! $nhanVien->links() !!}

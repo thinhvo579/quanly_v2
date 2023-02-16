@@ -134,6 +134,33 @@
                                         </div>
                                         
                                     </div>
+                                    <div class="heading-detail">
+                                        <h4>Thống kê bảng lương</h4>
+                                    </div>
+                                    <div class="bang-luong d-flex">
+                                        <div class="w-33">
+                                            <p>Tháng 1: {{number_format($luong->thang1 ?? '0', 0, '', ',')}}</p>
+                                            <p>Tháng 2: {{number_format($luong->thang2 ?? '0', 0, '', ',')}}</p>
+                                            <p>Tháng 3: {{number_format($luong->thang3 ?? '0', 0, '', ',')}}</p>
+                                            <p>Tháng 4: {{number_format($luong->thang4 ?? '0', 0, '', ',')}}</p>
+                                        </div>
+                                        <div class="w-33">
+                                            <p>Tháng 5: {{number_format($luong->thang5 ?? '0', 0, '', ',')}}</p>
+                                        <p>Tháng 6: {{number_format($luong->thang6 ?? '0', 0, '', ',')}}</p>
+                                        <p>Tháng 7: {{number_format($luong->thang7 ?? '0', 0, '', ',')}}</p>
+                                        <p>Tháng 8: {{number_format($luong->thang8 ?? '0', 0, '', ',')}}</p>
+                                        </div><div class="w-33">
+                                            <p>Tháng 0: {{number_format($luong->thang9 ?? '0', 0, '', ',')}}</p>
+                                            <p>Tháng 10: {{number_format($luong->thang10 ?? '0', 0, '', ',')}}</p>
+                                            <p>Tháng 11: {{number_format($luong->thang11 ?? '0', 0, '', ',')}}</p>
+                                            <p>Tháng 12: {{number_format($luong->thang12 ?? '0', 0, '', ',')}}</p>
+                                        </div>
+                                        <div>
+                                            <p>Tổng lương trong năm: {{number_format($luong->thang1 + $luong->thang2 +$luong->thang3+$luong->thang4+$luong->thang5+$luong->thang6+$luong->thang7+$luong->thang8+$luong->thang9+$luong->thang10+$luong->thang11+$luong->thang12)  }} VNĐ</p>
+                                        </div>
+                                       
+                                    </div>
+                                    
                                     
                                 </div>
                             </div>

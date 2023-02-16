@@ -9,9 +9,44 @@
 body {
     height: 100%;
 }
+.w-33{
+     width: 33%;
+}
+.bang-luong{
+    flex-wrap: wrap;
+}
+.bang-luong p{
+    color: gray;
+    font-weight: 500;
+}
 .sticky-footer{
     padding: 30px 0px 15px 0px;
     font-weight: 300;
+}
+.pt-10{
+    padding-top: 10px;
+}
+.luong-submit{
+    padding-top: 10px;
+}
+.luong-nhap .w-50>div{
+    display: flex; margin-bottom: 10px;
+    
+}.luong-nhap {
+    justify-content: space-between;
+}
+.luong-nhap .w-50{
+    width: 48% !important;
+   
+}
+.luong-nhap label{
+    width: 25%;
+}
+.luong-nhap input{
+    width: 75%;
+}
+.luong-nhap label, .luong-nhap input{
+    font-size: 12px;
 }
 #wrapper {
     display: flex;
@@ -532,7 +567,7 @@ span.relative svg {}
     }
 
     .heading-detail h4 {
-        font-size: 13px;
+        font-size: 15px;
 
     }
 
@@ -582,5 +617,8 @@ span.relative svg {}
     }
     .modal-title{
         font-size: 13px;
+    }
+    .bang-luong{
+        font-size: 12px;
     }
 }

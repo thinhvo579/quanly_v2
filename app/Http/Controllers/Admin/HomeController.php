@@ -14,7 +14,7 @@ class HomeController extends Controller
     //
     public function getHome()
     {
-        return view('backend.index');
+        return view('layouts.master');
     }
     public function getLogout()
     {

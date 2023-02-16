@@ -29,7 +29,7 @@ Route::post('/postlogin',[LoginController::class, 'postLogin']);
 Route::get('/logout',[HomeController::class, 'getLogout']);
 
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/admin/trangchu', 'getHome')->middleware(checklogout::class);
+    Route::get('/', 'getHome')->middleware(checklogout::class);
     Route::get('/admin/nhansu', 'nhanSu')->middleware(checklogout::class);
     // Route::get('/admin/phongban', 'phongBan')->middleware(checklogout::class);
 });
@@ -60,6 +60,7 @@ Route::post('/nhanvien/suanv/{nv}',[NhanVienController::class, 'nvUpdate']);
 Route::get('/nhanvien/themnv', [NhanVienController::class, 'nvAddView'])->name('nhanvien.them');
 Route::post('/nhanvien/themnv', [NhanVienController::class, 'nvAdd']);
 Route::delete('/nhanvien/xoanv/{id}', [NhanVienController::class, 'nvDelete']);
+Route::post('/nhanvien/cap-nhat-bang-luong/{maNv}',[NhanVienController::class, 'luongNv']);
 
 // -----------------------------------------ChucDanh-----------------------------------------
 Route::get('/chucdanh',[ChucDanhController::class, 'cdListView']);

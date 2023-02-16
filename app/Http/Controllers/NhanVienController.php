@@ -7,17 +7,20 @@ use App\Models\NhanVien;
 use Illuminate\Http\Request;
 use App\Models\ChucDanh;
 use App\Models\PhongBan;
+use App\Models\Luong;
 use Illuminate\Support\Facades\DB;
 
 class NhanVienController extends Controller
 {
     public function nvList()
-    {
+    {   
         $nhanVien = NhanVien::latest()->paginate(5);
         $phongBan = PhongBan::all();
         $chucDanh = ChucDanh::all();
-        return view('nhanvien.nv-list', compact('nhanVien', 'phongBan', 'chucDanh'))
+            return view('nhanvien.nv-list', compact('nhanVien', 'phongBan', 'chucDanh'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        
     }
     public function nvView(NhanVien $nv)
     {
@@ -27,15 +30,27 @@ class NhanVienController extends Controller
         // ->join('table_chuc_danh', 'table_nhan_vien.ma_chuc_danh', '=', 'table_chuc_danh.ma_chuc_danh')
         // ->get();
         // return $nv->ma_nhan_vien;
-        return view('nhanvien.nv-detail', compact('nv'));
+        // $getluong = DB::table('table_nhan_vien')
+        // ->selectRaw('table_nhan_vien.ma_nhan_vien, table_luong.thang1 , table_luong.thang2')
+        // ->join('table_luong', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
+        // ->get();
+        // $luong = Luong::find($nv->ma_nhan_vien);
+        $luong = Luong::where('ma_nhan_vien', $nv->ma_nhan_vien)->first();
+         return view('nhanvien.nv-detail', compact('nv','luong'));
+        
+        
     }
     public function nvEdit($id)
     {
         $nhanVien = NhanVien::find($id);
+        $maNv = NhanVien::where('id', $id)->select('ma_nhan_vien')->first();
+        // return $maNv;
         $phongBan = PhongBan::all();
         $chucDanh = ChucDanh::all();
-
-        return view('nhanvien.nv-edit')->with('nhanVien', $nhanVien)->with('phongBan', $phongBan)->with('chucDanh', $chucDanh);
+        $luong = Luong::where('ma_nhan_vien', $maNv->ma_nhan_vien)->first();
+        // 
+         return view('nhanvien.nv-edit')->with('nhanVien', $nhanVien)->with('phongBan', $phongBan)->with('chucDanh', $chucDanh)->with('luong', $luong);
+        
     }
     public function nvUpdate(Request $request, $id)
     {
@@ -63,6 +78,10 @@ class NhanVienController extends Controller
             $input =   $request->all();
             if ($request->ma_nhan_vien)
                 NhanVien::create($input);
+                Luong::updateOrCreate(
+                    ['ma_nhan_vien' => $request->ma_nhan_vien, 'thang1' => 0,'thang2' => 0,'thang3' => 0,'thang4' => 0,'thang5' => 0,'thang6' => 0,
+                    'thang7' => 0,'thang8' => 0,'thang9' => 0,'thang10' => 0,'thang11' => 0,'thang12' => 0, ],
+                );
             return redirect('nhanvien')->with('flash_message', 'Thêm Phòng Ban thành công!');
         }
     }
@@ -72,7 +91,10 @@ class NhanVienController extends Controller
     // }
     public function nvDelete($id){
         $result = NhanVien::find($id);
+        $maNv = NhanVien::where('id', $id)->select('ma_nhan_vien')->first();
+        Luong::where('ma_nhan_vien', $maNv->ma_nhan_vien)->delete();
         $result->delete();
+       
         if ($result) {
             return response()->json([
                 'message' => "Xóa dữ liệu thành công", "code" => "200",'detail'=> $result
@@ -81,7 +103,7 @@ class NhanVienController extends Controller
             return response()->json([
                 'message' => "Xóa dữ liệu thất bại", "code" => "500"
             ]);
-        }
+         }
     }
     //-------------------------------------------------------------------------------------------------------------------
 
@@ -96,5 +118,14 @@ class NhanVienController extends Controller
         return response()->json([
             'nhanvien' => $result,
         ]);
+    }
+    public function luongNv(Request $request, $maNv){
+        // $luong = Luong::find($maNv);
+        $luong = Luong::where('ma_nhan_vien', $maNv)->first();
+       //return $luong;
+        $input = $request->all();
+        $luong->update($input);
+
+         return redirect()->back()->with('message','Operation Successful !');
     }
 }

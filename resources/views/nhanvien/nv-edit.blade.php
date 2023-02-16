@@ -102,6 +102,7 @@
                                         <input class="form-control" id="luong" name="luong" type="text" value="{{$nhanVien->luong}}">
                                     </div>
                                 </div>
+                                
                                 {{-- <div class="col-12 col-sm-4">
                                     <div class="form-group students-up-files">
                                         <label>Upload ảnh (150px X 150px)</label>
@@ -113,12 +114,105 @@
                                     </div>
                                 </div> --}}
                                 <div class="col-12">
-                                    <div class="student-submit">
+                                    <div class="student-submit pt-10">
                                         <button type="submit" class="btn btn-primary">Lưu thông tin</button>
                                     </div>
                                 </div>
                             </div>
+                            
                         </form>
+                        <form action="{{url('/nhanvien/cap-nhat-bang-luong/'.$nhanVien->ma_nhan_vien)}}" method="post">
+                            @csrf
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="heading-detail">
+                                    <h4>Nhập lương</h4>
+                                </div>
+                                
+                                    <div class="row" >
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 1</span></label>
+                                                <input class="form-control"id="thang1" name="thang1" type="text" value="{{$luong->thang1 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 2</span></label>
+                                                <input class="form-control"id="thang2" name="thang2" type="text" value="{{$luong->thang2 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 3</span></label>
+                                                <input class="form-control"id="thang3" name="thang3" type="text" value="{{$luong->thang3 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 4</span></label>
+                                                <input class="form-control"id="thang4" name="thang4" type="text" value="{{$luong->thang4 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 5</span></label>
+                                                <input class="form-control"id="thang5" name="thang5" type="text" value="{{$luong->thang5 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 6</span></label>
+                                                <input class="form-control"id="thang6" name="thang6" type="text" value="{{$luong->thang6 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 7</span></label>
+                                                <input class="form-control"id="thang7" name="thang7" type="text" value="{{$luong->thang7 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 8</span></label>
+                                                <input class="form-control"id="thang8" name="thang8" type="text" value="{{$luong->thang8 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 9</span></label>
+                                                <input class="form-control"id="thang9" name="thang9" type="text" value="{{$luong->thang9 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 10</span></label>
+                                                <input class="form-control"id="thang10" name="thang10" type="text" value="{{$luong->thang10 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 11</span></label>
+                                                <input class="form-control"id="thang11" name="thang11" type="text" value="{{$luong->thang11 ?? '0'}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 12</span></label>
+                                                <input class="form-control"id="thang12" name="thang12" type="text" value="{{$luong->thang12 ?? '0'}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="luong-submit">
+                                        <div class="pb-submit student-submit">
+                                            <button type="submit" class="btn btn-primary">Lưu Bảng Lương</button>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>

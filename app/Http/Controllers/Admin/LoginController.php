@@ -29,7 +29,7 @@ class LoginController extends Controller
     //     $remember = "false";
     //    }
         if(Auth::attempt($arr)){
-            return redirect()->intended('admin/trangchu');
+            return redirect()->intended('/');
         }
         else{
             return back()->withInput()->with('error', 'Tài khoản hoặc mật khẩu không đúng!');
