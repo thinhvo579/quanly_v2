@@ -41,7 +41,7 @@
                     <td>{{$nv->ma_nhan_vien}}</td>
                     <td>{{$nv->ten_nhan_vien}}</td>
                     <td>{{$nv->gioi_tinh}}</td>
-                    <td>{{$nv->ngay_sinh}}</td>
+                    <td>{{date('d-m-Y', strtotime($nv->ngay_sinh))}}</td>
                     <td>
                         <div class="actions ">
                             <a href="{{ url('nhanvien/xemnv/'.$nv->id)}}" class="btn btn-sm bg-success-light me-2 ">

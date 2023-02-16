@@ -202,5 +202,8 @@
     <script>
       feather.replace()
     </script>
+    <script>
+        moment().format();
+    </script>
     </body>
     </html>
