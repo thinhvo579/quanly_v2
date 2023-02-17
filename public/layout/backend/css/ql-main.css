@@ -9,45 +9,130 @@
 body {
     height: 100%;
 }
-.w-33{
-     width: 33%;
+.page-title{
+    position: absolute;
+    top: 3px;
+    left: 25px;
 }
-.bang-luong{
+.page-header .col{
+    justify-content: flex-end;
+}
+.table-filter .filter-group {
+    display: flex;
+    align-items: center;
+}
+
+.table-filter .filter-group label {
+    font-size: 12px;
+    margin-right: 10px;
+    margin-bottom: 0 !important;
+    white-space: nowrap;
+}
+
+.filter-gr {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.show-entries {
+    display: flex;
+    align-items: center;
+}
+
+.filter-icon {
+    margin-right: 10px;
+    color: gray;
+}
+
+.show-entries span {
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.show-entries select {
+    height: auto !important;
+    margin-right: 10px;
+}
+
+.table-filter .filter-group .form-control {
+    height: auto !important;
+
+}
+
+.table-filter {
+    padding: 10px 0 20px 0;
+}
+
+.table-filter .filter-group:not(:last-child) {
+    margin-right: 10px;
+}
+
+.flash-message {
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #28a745 !important;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 999;
+}
+
+.w-33 {
+    width: 33%;
+}
+
+.bang-luong {
     flex-wrap: wrap;
 }
-.bang-luong p{
+
+.bang-luong p {
     color: gray;
     font-weight: 500;
 }
-.sticky-footer{
+
+.sticky-footer {
     padding: 30px 0px 15px 0px;
     font-weight: 300;
 }
-.pt-10{
+
+.pt-10 {
     padding-top: 10px;
 }
-.luong-submit{
+
+.luong-submit {
     padding-top: 10px;
 }
-.luong-nhap .w-50>div{
-    display: flex; margin-bottom: 10px;
-    
-}.luong-nhap {
+
+.luong-nhap .w-50>div {
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.luong-nhap {
     justify-content: space-between;
 }
-.luong-nhap .w-50{
+
+.luong-nhap .w-50 {
     width: 48% !important;
-   
+
 }
-.luong-nhap label{
+
+.luong-nhap label {
     width: 25%;
 }
-.luong-nhap input{
+
+.luong-nhap input {
     width: 75%;
 }
-.luong-nhap label, .luong-nhap input{
+
+.luong-nhap label,
+.luong-nhap input {
     font-size: 12px;
 }
+
 #wrapper {
     display: flex;
     flex-wrap: nowrap;
@@ -182,7 +267,6 @@ td {
 .container-fluid .table tbody td {
     color: #666;
     font-size: 11px;
-    text-align: center;
 
 }
 
@@ -503,25 +587,31 @@ span.relative svg {}
 .views-personal {
     margin-left: 10px;
 }
+
 .sidebar ul ul a {
     display: block;
     font-size: 15px;
     padding: 7px 10px 7px 30px;
     position: relative;
     margin-bottom: 2px;
-}.sidebar ul {
+}
+
+.sidebar ul {
     font-size: 15px;
     list-style-type: none;
     margin: 0;
     padding: 0;
     position: relative;
-}.sidebar li a {
+}
+
+.sidebar li a {
     color: #ffffff;
     display: block;
     font-size: 12px;
     height: auto;
     padding: 0 20px;
 }
+
 .sidebar ul a {
     display: block;
     font-size: 12px;
@@ -529,18 +619,26 @@ span.relative svg {}
     position: relative;
     margin-bottom: 2px;
 }
-.submenu  ul{
+
+.submenu ul {
     display: none;
-}.student-submit .btn-primary {
+}
+
+.student-submit .btn-primary {
     min-width: 160px;
     border-radius: 10px;
     background: #3d5ee1;
     border: 1px solid #3d5ee1;
 }
-.btn-add-new{
+
+.btn-add-new {
     font-size: 12px;
 }
-.subdrop:hover{text-decoration: none;}
+
+.subdrop:hover {
+    text-decoration: none;
+}
+
 @media screen and (max-width: 1440px) {
     .sidebar-dark .nav-item.active .nav-link {
         font-size: 13px;
@@ -598,6 +696,7 @@ span.relative svg {}
 
         margin-bottom: 15px;
     }
+
     .sidebar-menu>ul>li>a {
         align-items: center;
         display: flex;
@@ -606,19 +705,34 @@ span.relative svg {}
         position: relative;
         transition: all .2s ease-in-out 0s;
     }
-    .form-title{
+
+    .form-title {
         font-size: 13px;
     }
-    .form-group label{
+
+    .form-group label {
         font-size: 12px;
     }
-    .form-control{
+
+    .form-control {
         font-size: 12px;
     }
-    .modal-title{
+
+    .modal-title {
         font-size: 13px;
     }
-    .bang-luong{
+
+    .bang-luong {
         font-size: 12px;
+    }
+    #myTable_length, #myTable_filter, #myTable_info, #myTable_paginate  {
+        font-size: 12px;
+    }
+    #myTable_filter{
+        display: none;
+    }
+    .message-cd{
+        font-size: 12px;
+    margin-bottom: 0;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChucDanh;
+use App\Models\NhanVien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,8 +11,10 @@ class ChucDanhController extends Controller
 {
     //
     public function cdListView(){
-        $chucdanh = ChucDanh::latest()->paginate(5);
-        return view('chucdanh.cd-list', compact('chucdanh'))->with('i', (request()->input('page', 1) - 1) * 5);;
+        $chucdanh = ChucDanh::all();
+        
+        return view('chucdanh.cd-list', compact('chucdanh'))->with('i');
+
     }
     public function cdViewDetail(ChucDanh $cd){
         return view('chucdanh.cd-detail', compact('cd'));
@@ -25,7 +28,7 @@ class ChucDanhController extends Controller
         $input = $request->all();
         $chucDanh->update($input);
 
-        return redirect('chucdanh');
+        return redirect('chucdanh')->with('flash_message', 'Cập nhật chức danh thành công!');;
     }
     public function cdAddView(Request $request){
         $chucDanh = ChucDanh::all();
@@ -46,15 +49,20 @@ class ChucDanhController extends Controller
     }
     public function cdDelete($id){
         $result = ChucDanh::find($id);
-        $result->delete();
-        if ($result) {
+        $checkUse = DB::table('table_nhan_vien')->where('ma_chuc_danh', '=',  $result->ma_chuc_danh)->first();
+//  return   $checkUse;
+        if(!$checkUse){
+            $result->delete();
             return response()->json([
-                'message' => "Xóa dữ liệu thành công", "code" => "200",'detail'=> $result
-            ]);
-        } else {
-            return response()->json([
-                'message' => "Xóa dữ liệu thất bại", "code" => "500"
+                'message' => "Xóa dữ liệu thành công", "code" => "200"
             ]);
         }
+        else{
+            return redirect('/chucdanh')->with('flash_message', 'Mã chức danh đang sử dụng!');
+            // return response()->json([
+            //     'flash_message' => "Mã chức danh đang sử dụng!", "code" => "500"
+            // ]);
+        }
+    
     }
 }

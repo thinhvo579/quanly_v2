@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 use App\Models\ChucDanh;
 use App\Models\PhongBan;
 use App\Models\Luong;
+
 use Illuminate\Support\Facades\DB;
 
 class NhanVienController extends Controller
 {
     public function nvList()
     {   
-        $nhanVien = NhanVien::latest()->paginate(5);
+        $nhanVien = NhanVien::all();
         $phongBan = PhongBan::all();
         $chucDanh = ChucDanh::all();
             return view('nhanvien.nv-list', compact('nhanVien', 'phongBan', 'chucDanh'))
@@ -24,20 +25,19 @@ class NhanVienController extends Controller
     }
     public function nvView(NhanVien $nv)
     {
-        // $getname = DB::table('table_nhan_vien')
+        // $getname = NhanVien::where('ma_nhan_vien', $nv->ma_nhan_vien)
         // ->selectRaw('table_nhan_vien.ma_nhan_vien, table_phong_ban.ten_phong_ban , table_chuc_danh.ten_chuc_danh')
         // ->join('table_phong_ban', 'table_nhan_vien.ma_phong_ban', '=', 'table_phong_ban.ma_phong_ban')
         // ->join('table_chuc_danh', 'table_nhan_vien.ma_chuc_danh', '=', 'table_chuc_danh.ma_chuc_danh')
-        // ->get();
+        // ->get('table_phong_ban.ten_phong_ban');
         // return $nv->ma_nhan_vien;
-        // $getluong = DB::table('table_nhan_vien')
-        // ->selectRaw('table_nhan_vien.ma_nhan_vien, table_luong.thang1 , table_luong.thang2')
-        // ->join('table_luong', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
-        // ->get();
-        // $luong = Luong::find($nv->ma_nhan_vien);
+
         $luong = Luong::where('ma_nhan_vien', $nv->ma_nhan_vien)->first();
-         return view('nhanvien.nv-detail', compact('nv','luong'));
-        
+        $cd_name = ChucDanh::where('ma_chuc_danh', $nv->ma_chuc_danh)->select('ten_chuc_danh')->first();
+        $pb_name = PhongBan::where('ma_phong_ban', $nv->ma_phong_ban)->select('ten_phong_ban')->first();
+        $ten_chuc_danh =  $cd_name->ten_chuc_danh;
+        $ten_pb = $pb_name->ten_phong_ban;
+        return view('nhanvien.nv-detail', compact('nv','luong','ten_chuc_danh','ten_pb'));
         
     }
     public function nvEdit($id)
@@ -58,8 +58,7 @@ class NhanVienController extends Controller
         $nhanVien = NhanVien::find($id);
         $input = $request->all();
         $nhanVien->update($input);
-
-        return redirect('nhanvien');
+        return redirect('nhanvien')->with('flash_message', 'Sửa nhân viên thành công!');
     }
     public function nvAddView()
     {
@@ -71,9 +70,7 @@ class NhanVienController extends Controller
     {
         $usedid = DB::table('table_nhan_vien')->where('ma_nhan_vien', 'LIKE', $request->ma_nhan_vien)->first();
         if ($usedid) {
-            return response()->json([
-                'flash_message' => "Mã Phòng Ban đã tồn tại !", "code" => "200"
-            ]);
+            return redirect()->back()->with('flash_message', 'Mã nhân viên đã tồn tại!');
         } else {
             $input =   $request->all();
             if ($request->ma_nhan_vien)
@@ -82,7 +79,7 @@ class NhanVienController extends Controller
                     ['ma_nhan_vien' => $request->ma_nhan_vien, 'thang1' => 0,'thang2' => 0,'thang3' => 0,'thang4' => 0,'thang5' => 0,'thang6' => 0,
                     'thang7' => 0,'thang8' => 0,'thang9' => 0,'thang10' => 0,'thang11' => 0,'thang12' => 0, ],
                 );
-            return redirect('nhanvien')->with('flash_message', 'Thêm Phòng Ban thành công!');
+            return redirect('nhanvien')->with('flash_message', 'Thêm nhân viên thành công!');
         }
     }
     // public function nvDelete($id){
@@ -127,5 +124,18 @@ class NhanVienController extends Controller
         $luong->update($input);
 
          return redirect()->back()->with('message','Operation Successful !');
+    }
+    public function querySearch(Request $request){
+        $request_mnv = $request->id_search;
+        $request_name = $request->name_search;
+        $request_sdt = $request->phone_search;
+        $nhanVien = NhanVien::where('ma_nhan_vien', 'LIKE', '%'.$request_mnv.'%')
+        ->where('ten_nhan_vien', 'LIKE', '%'.$request_name.'%')
+        ->where('so_dt', 'LIKE', '%'.$request_sdt.'%')
+        ->get();
+
+        return view('nhanvien.nv-search', compact('nhanVien'))->with('i');
+        //  return $query;
+
     }
 }

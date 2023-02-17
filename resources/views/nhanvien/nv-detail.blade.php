@@ -53,7 +53,24 @@
                                             <h5>{{$nv->ten_nhan_vien}}</h5>
                                         </div>
                                     </div>
-                                    
+                                    <div class="personal-activity">
+                                        <div class="personal-icons">
+                                            <i class="feather-code"></i>
+                                        </div>
+                                        <div class="views-personal">
+                                            <h4>Phòng Ban </h4>
+                                            <h5>{{$ten_pb}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="personal-activity">
+                                        <div class="personal-icons">
+                                            <i class="feather-folder"></i>
+                                        </div>
+                                        <div class="views-personal">
+                                            <h4>Chức Vụ </h4>
+                                            <h5>{{$ten_chuc_danh}}</h5>
+                                        </div>
+                                    </div>
                                     <div class="personal-activity">
                                         <div class="personal-icons">
                                             <i class="feather-phone-call"></i>
@@ -81,7 +98,7 @@
                                             <h5>{{$nv->ngay_sinh}}</h5>
                                         </div>
                                     </div>
-                                    <div class="personal-activity">
+                                    {{-- <div class="personal-activity">
                                         <div class="personal-icons">
                                             <i class="feather-dollar-sign"></i>
                                         </div>
@@ -90,7 +107,7 @@
                                             
                                             <h5>10.000.000</h5>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="personal-activity mb-0">
                                         <div class="personal-icons">
                                             <i class="feather-map-pin"></i>
@@ -109,31 +126,7 @@
                         <div class="student-personals-grp">
                             <div class="card mb-0">
                                 <div class="card-body">
-                                    <div class="heading-detail">
-                                        <h4>Nội dung</h4>
-                                    </div>
-                                    <div class="hello-park">
-                                        
-                                        <div class="personal-activity">
-                                            <div class="personal-icons">
-                                                <i class="feather-code"></i>
-                                            </div>
-                                            <div class="views-personal">
-                                                <h4>Phòng Ban </h4>
-                                                <h5>{{$nv->ma_nhan_vien}}</h5>
-                                            </div>
-                                        </div>
-                                        <div class="personal-activity">
-                                            <div class="personal-icons">
-                                                <img src="{{asset('assets/img/icons/buliding-icon.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-personal">
-                                                <h4>Chức Vụ </h4>
-                                                <h5>{{$nv->ma_nhan_vien}}</h5>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
+                                    
                                     <div class="heading-detail">
                                         <h4>Thống kê bảng lương</h4>
                                     </div>

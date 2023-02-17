@@ -1,11 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<div>
-    @if (session()->has('flash_message'))
-    <p class="flash-message">{{session()->get('flash_message')}}</p>
-    @endif
-</div>
+
 <div class="content container-fluid">
+
     <div class="page-header">
         <div class="row">
             <div class="col">
@@ -89,6 +86,8 @@
     </div>
 </div>
 
+
+
 <div class="modal fade" id="xoa-phong-ban" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -99,15 +98,16 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p class="message-cd"></p>
-            </div>
+            {{-- <div class="modal-body">
+          Xác nhận xóa
+        </div> --}}
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                 <button type="button" class="btn btn-danger xoa-pb-btn">Xóa</button>
             </div>
         </div>
     </div>
+
 </div>
 
 @endsection

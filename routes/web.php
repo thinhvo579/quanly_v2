@@ -50,7 +50,7 @@ Route::get('/phongban/suaphongban/{pb}',[PhongBanController::class, 'edit'])->na
 Route::post('/phongban/suaphongban/{pb}',[PhongBanController::class, 'capnhatpb']);
 Route::get('/phongban/themphongban',[PhongBanController::class, 'addpb']);
 Route::post('/phongban/themphongban', [PhongBanController::class, 'themdsPhongBan'])->name('phongban.them');
-Route::delete('/phongban/xoa-phong-ban/{id}', [HomeController::class, 'xoapb']);
+Route::post('/phongban/xoa-phong-ban/{id}', [PhongBanController::class, 'xoapb']);
 
 // -----------------------------------------NhanVien-----------------------------------------
 Route::get('/nhanvien',[NhanVienController::class, 'nvList'])->name('nhanvien.xem');
@@ -69,8 +69,10 @@ Route::get('/chucdanh/suacd/{cd}',[ChucDanhController::class, 'cdEdit'])->name('
 Route::post('/chucdanh/suacd/{cd}',[ChucDanhController::class, 'cdUpdate']);
 Route::get('/chucdanh/themcd',[ChucDanhController::class, 'cdAddView']);
 Route::post('/chucdanh/themcd', [ChucDanhController::class, 'cdAdd'])->name('chucdanh.them');
-Route::delete('/chucdanh/xoacd/{id}', [ChucDanhController::class, 'cdDelete']);
+Route::post('/chucdanh/xoacd/{id}', [ChucDanhController::class, 'cdDelete']);
 
 // -----------------------------------------Search-----------------------------------------
-Route::get('/tim-kiem',[SearchController::class, 'searchView']);
-Route::get('ket-qua-tim-kiem', [SearchController::class, 'searchResult'])->name('search.result');
+Route::get('/tim-kiem-nhan-vien',[NhanVienController::class, 'querySearch']);
+Route::get('/tim-kiem-phong-ban',[PhongBanController::class, 'querySearchPb']);
+Route::get('/tim-kiem-chuc-danh',[ChucDanhController::class, 'querySearchCd']);
+// Route::get('ket-qua-tim-kiem', [SearchController::class, 'searchResult'])->name('search.result');

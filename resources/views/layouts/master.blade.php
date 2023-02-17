@@ -4,7 +4,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Dashboard</title>
+<title>Quản Lý Nhân Viên</title>
 
 <!-- Custom fonts for this template-->
 
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
 <link rel="stylesheet" href="/layout/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
 <link href="/layout/backend/css/ql-main.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
 {{-- <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}"> --}}
@@ -188,6 +189,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://unpkg.com/moment@2.22.2/min/moment.min.js"></script>
     <script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="/layout/backend/js/phong-ban.js"></script>
     <script src="/layout/backend/js/nhan-vien.js"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
@@ -199,9 +201,7 @@
 		});
 
     </script>
-    <script>
-      feather.replace()
-    </script>
+
     <script>
         moment().format();
     </script>

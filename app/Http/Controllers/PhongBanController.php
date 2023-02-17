@@ -18,7 +18,7 @@ class PhongBanController extends Controller
     }
     public function viewpb(PhongBan $pb)
     { //return $pb;
-        return view('phongban.xempb',compact('pb'));
+        return view('phongban.pb-detail',compact('pb'));
     }
     public function phongBan()
     {
@@ -59,7 +59,29 @@ class PhongBanController extends Controller
     }
     public function xoapb($id)
     {
-        PhongBan::destroy($id);
-        return redirect('phongban')->with('flash_message', 'Xóa thành công');  
+            $result = PhongBan::find($id);
+        //PhongBan::destroy($id);
+        $checkUse = DB::table('table_nhan_vien')->where('ma_phong_ban', '=',  $result->ma_phong_ban)->first();
+        if(!$checkUse){
+            $result->delete();
+            return response()->json([
+                'message' => "Xóa dữ liệu thành công", "code" => "200"
+            ]);
+        }
+        else{
+            return redirect('/phongban')->with('flash_message', 'Mã phòng ban đang sử dụng!');
+        }
+       // return redirect('phongban')->with('flash_message', 'Xóa thành công');  
+    }
+
+    public function querySearchPb(Request $request){
+        $phongBan = PhongBan::where('ma_phong_ban', 'LIKE', '%'.$request->mpb.'%')
+        ->where('ten_phong_ban', 'LIKE', '%'.$request->tenpb.'%')
+        ->where('sdt_pb', 'LIKE', '%'.$request->sdtpb.'%')
+        ->get();
+
+        return view('phongban.pb-search', compact('phongBan'))->with('i');
+        //  return $query;
+
     }
 }

@@ -14,4 +14,8 @@ class ChucDanh extends Model
         'ten_chuc_danh',
         'mo_ta'
     ];
+    public function post()
+    {
+        return $this->belongsTo('App\Models\ChucDanh');
+    }
 }

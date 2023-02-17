@@ -54,9 +54,10 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms calendar-icon">
+                                        {{-- datetimepicker --}}
                                         <label>Ngày sinh<span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" type="text" name="ngay_sinh" id="ngay_sinh"
-                                            placeholder="DD-MM-YYYY" value="{{$nhanVien->ngay_sinh}}">
+                                            placeholder="" value="{{date('d-m-Y', strtotime($nhanVien->ngay_sinh))}}">
                                     </div>
                                 </div>
                                 
@@ -96,12 +97,12 @@
                                         <input class="form-control"id="dia_chi" name="dia_chi" type="text" value="{{$nhanVien->dia_chi}}">
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
+                                {{-- <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Lương<span class="login-danger">*</span></label>
                                         <input class="form-control" id="luong" name="luong" type="text" value="{{$nhanVien->luong}}">
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                                 {{-- <div class="col-12 col-sm-4">
                                     <div class="form-group students-up-files">

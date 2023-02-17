@@ -25,4 +25,8 @@ class Luong extends Model
         'thang12',
         
     ];
+    public function luongNv()
+    {
+        return $this->hasOne('namespace App\Models\NhanVien');
+    }
 }

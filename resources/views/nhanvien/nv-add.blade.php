@@ -96,12 +96,12 @@
                                         <input class="form-control"id="dia_chi" name="dia_chi" type="text" value="">
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
+                                {{-- <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Lương<span class="login-danger">*</span></label>
                                         <input class="form-control" id="luong" name="luong" type="text" value="">
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- <div class="col-12 col-sm-4">
                                     <div class="form-group students-up-files">
                                         <label>Upload ảnh (150px X 150px)</label>

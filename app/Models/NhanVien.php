@@ -20,5 +20,11 @@ class NhanVien extends Model
         'so_dt',
         'dia_chi',
         'luong'
+        
     ];
+    
+    public function luong()
+    {
+        return $this->hasOne('App\Models\Luong', 'ma_nhan_vien');
+    }
 }
