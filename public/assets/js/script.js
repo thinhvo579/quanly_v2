@@ -2,30 +2,28 @@ $(document).ready(function () {
     if ($(".datetimepicker").length > 0) {
         $(".datetimepicker").datepicker({
             shortYearCutoff: 1,
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: 'yy-mm-dd',
-        minDate: "-70Y", 
-        maxDate: "-15Y",
-        yearRange: "1942:2010"
-        }
-        );
-      
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "yy-mm-dd",
+            minDate: "-70Y",
+            maxDate: "-15Y",
+            yearRange: "1942:2010",
+        });
     }
-    $('#myTable').DataTable({
-        "language": {
-            "paginate": {
-                "previous": "Prev ",
-              "next": "Next"
+    $("#myTable").DataTable({
+        language: {
+            paginate: {
+                previous: "Prev ",
+                next: "Next",
             },
-            "info": "Hiện _PAGE_ trên _PAGES_ page",
-            "lengthMenu": "Hiện _MENU_ dòng",
-            "emptyTable": "Không có dữ liệu!"
-          }
-      });
-    setTimeout(function(){
+            info: "Hiện _PAGE_ trên _PAGES_ trang",
+            lengthMenu: "Hiện _MENU_ dòng",
+            emptyTable: "Không có dữ liệu!",
+        },
+    });
+    setTimeout(function () {
         $(".flash-message").remove();
-    },3000);
+    }, 3000);
     $(".submenu a").on("click", function (e) {
         if ($(this).parent().hasClass("submenu")) {
             e.preventDefault();
@@ -46,7 +44,7 @@ $(document).ready(function () {
         var view_id = $(this).data("id");
         // alert(view_id);
         $("#id_del").val(view_id);
-        $('.message-cd').text('');
+        $(".message-cd").text("");
     });
     $(document).on("click", ".xoa-pb-btn", function (e) {
         $("#overlay").show();
@@ -67,7 +65,7 @@ $(document).ready(function () {
                     window.location.href = "/phongban";
                 } else {
                     $("#overlay").hide();
-                    $('.message-cd').text('Mã Phòng Ban đang được sử dụng!');
+                    $(".message-cd").text("Mã Phòng Ban đang được sử dụng!");
                 }
             },
         });
@@ -78,7 +76,6 @@ $(document).ready(function () {
         var view_id = $(this).data("id");
         // alert(view_id);
         $("#id_del").val(view_id);
-        
     });
     $(document).on("click", ".xoa-nv-btn", function (e) {
         $("#overlay").show();
@@ -98,7 +95,6 @@ $(document).ready(function () {
                     $("#overlay").hide();
                     window.location.href = "/nhanvien";
                 } else {
-                    
                 }
             },
         });
@@ -108,7 +104,7 @@ $(document).ready(function () {
         e.preventDefault();
         var view_id = $(this).data("id");
         $("#id_del").val(view_id);
-        $('.message-cd').text('');
+        $(".message-cd").text("");
     });
     $(document).on("click", ".xoa-cd-btn", function (e) {
         $("#overlay").show();
@@ -130,9 +126,7 @@ $(document).ready(function () {
                     window.location.href = "/chucdanh";
                 } else {
                     $("#overlay").hide();
-                    $('.message-cd').text('Mã Chức Danh đang được sử dụng!');
-                    
-                    
+                    $(".message-cd").text("Mã Chức Danh đang được sử dụng!");
                 }
             },
         });

@@ -55,7 +55,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms calendar-icon">
                                         <label>Ngày sinh<span class="login-danger">*</span></label>
-                                        <input class="form-control datetimepicker" type="date" name="ngay_sinh" id="ngay_sinh"
+                                        <input class="form-control datetimepicker" type="text" name="ngay_sinh" id="ngay_sinh"
                                             placeholder="DD-MM-YYYY" value="">
                                     </div>
                                 </div>

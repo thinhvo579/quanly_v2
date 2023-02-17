@@ -190,6 +190,7 @@
     <script src="https://unpkg.com/moment@2.22.2/min/moment.min.js"></script>
     <script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="/layout/backend/js/phong-ban.js"></script>
     <script src="/layout/backend/js/nhan-vien.js"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
@@ -205,5 +206,6 @@
     <script>
         moment().format();
     </script>
+    
     </body>
     </html>

@@ -5,9 +5,14 @@
     background-position: center;
     background-size: cover;
 }
-
+.canvasjs-chart-credit{
+    display:  none !important;
+}
 body {
     height: 100%;
+}
+.bg-comman{
+    margin-bottom: 20px;
 }
 .page-title{
     position: absolute;

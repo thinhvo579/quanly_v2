@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\NhanVien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,36 @@ class HomeController extends Controller
     //
     public function getHome()
     {
-        return view('welcome');
+        $countNv = NhanVien::count();
+        $countPb = PhongBan::count();
+
+        $gt_nam = NhanVien::where('gioi_tinh', 'Nam')->count();
+        $gt_nu = NhanVien::where('gioi_tinh', 'Nữ')->count();
+        $genderArr = array(
+            array("label" => "Nam", "y" => $gt_nam),
+            array("label" => "Nữ", "y" => $gt_nu),
+            array("label" => "Khác", "y" => $countNv - $gt_nam - $gt_nu),
+
+        );
+        $count_age_30 = DB::table('table_nhan_vien')
+        ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) < 30 ")
+        ->count();
+        $count_age_30_45 = DB::table('table_nhan_vien')
+        ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) > 30 ")
+        ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) < 45 ")
+        ->count();
+        $count_age_45 = DB::table('table_nhan_vien')
+            ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) >= 45 ")
+            ->count();
+        $dataAges = array(
+            array("label" => "Dưới 30 tuổi", "y" => $count_age_30),
+            array("label" => "Từ 30 đến 45", "y" =>  $count_age_30_45),
+            array("label" => "Trên 45", "y" => $count_age_45),
+
+        );
+
+         //return $count_age_45;
+        return view('welcome', compact('countNv', 'countPb', 'genderArr', 'dataAges'));
     }
     public function getLogout()
     {
@@ -28,8 +58,8 @@ class HomeController extends Controller
     public function phongBan()
     {
         $phongBan = PhongBan::latest()->paginate(5);
-        return view('phongban.pb-list',compact('phongBan'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('phongban.pb-list', compact('phongBan'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function dsPhongBan()
     {
@@ -38,10 +68,11 @@ class HomeController extends Controller
             'phongban' => $phongBan,
         ]);
     }
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $result = PhongBan::all();
-        if($request->keyword != ''){
-            $result = PhongBan::where('ten_phong_ban','LIKE','%'.$request->keyword.'%')->orWhere('ma_phong_ban','LIKE','%'.$request->keyword.'%')->get();
+        if ($request->keyword != '') {
+            $result = PhongBan::where('ten_phong_ban', 'LIKE', '%' . $request->keyword . '%')->orWhere('ma_phong_ban', 'LIKE', '%' . $request->keyword . '%')->get();
         }
         return response()->json([
             'phongban' => $result,
@@ -66,7 +97,8 @@ class HomeController extends Controller
             ]);
         }
     }
-    public function xoaPhongBan(Request $request){
+    public function xoaPhongBan(Request $request)
+    {
         // Call deleteData() method of Page Model
         $result = PhongBan::where('id', $request->id_del)->delete();
         if ($result) {
@@ -79,11 +111,12 @@ class HomeController extends Controller
             ]);
         }
     }
-    public function xemchitiet(Request $request){
+    public function xemchitiet(Request $request)
+    {
         $result = PhongBan::where('id', $request->view_id)->first();
         if ($result) {
             return response()->json([
-                'message' => "Success", "code" => "200",'detail'=> $result
+                'message' => "Success", "code" => "200", 'detail' => $result
             ]);
         } else {
             return response()->json([
@@ -91,12 +124,13 @@ class HomeController extends Controller
             ]);
         }
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $result = PhongBan::find($id);
         $result->delete();
         if ($result) {
             return response()->json([
-                'message' => "Xóa dữ liệu thành công", "code" => "200",'detail'=> $result
+                'message' => "Xóa dữ liệu thành công", "code" => "200", 'detail' => $result
             ]);
         } else {
             return response()->json([
@@ -104,11 +138,12 @@ class HomeController extends Controller
             ]);
         }
     }
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
         $result = PhongBan::where('id', $request->view_id)->first();
         if ($result) {
             return response()->json([
-                'message' => "Success", "code" => "200",'detail'=> $result
+                'message' => "Success", "code" => "200", 'detail' => $result
             ]);
         } else {
             return response()->json([
@@ -116,7 +151,8 @@ class HomeController extends Controller
             ]);
         }
     }
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $find_id =  $request->id_pb;
         $result = PhongBan::find($find_id);
         $result->ma_phong_ban = $request->edit_ma_pb;
@@ -134,7 +170,4 @@ class HomeController extends Controller
             ]);
         }
     }
-
-    
-    
 }
