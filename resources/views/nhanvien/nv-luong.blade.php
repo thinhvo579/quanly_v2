@@ -14,8 +14,8 @@
             <div class="col">
                 <h3 class="page-title">Danh Sách Nhân Viên</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active">Danh Sách Nhân Viên</li>
+                    <li class="breadcrumb-item"><a href="{{url('/nhanvien')}}">Danh Sách Nhân Viên</a></li>
+                    <li class="breadcrumb-item active">Bảng Lương</li>
                 </ul>
             </div>
         </div>
@@ -36,7 +36,12 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phone_search" placeholder="Tìm kiếm theo số điện thoại ...">
+                        <select name="" id="">
+                            <option value="">Phòng Ban</option>
+                            @foreach ($phongBan as $pb)
+                            <option value="{{$pb->ma_phong_ban}}">{{$pb->ten_phong_ban}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -76,15 +81,11 @@
                                     <td>{{date('d-m-Y', strtotime($nv->ngay_sinh))}}</td>
                                     <td>
                                         <div class="actions ">
-                                            <a href="{{ url('nhanvien/xemnv/'.$nv->id)}}" class="btn btn-sm bg-success-light me-2 ">
-                                                <i class="feather-eye"></i>
+
+                                            <a href="{{ url('nhanvien/bangluong/'.$nv->id)}}" class="btn btn-sm bg-danger-light btn-salary">
+                                                Thêm Bảng Lương
                                             </a>
-                                            <a href="{{ url('nhanvien/suanv/'.$nv->id)}}" class="btn btn-sm bg-danger-light">
-                                                <i class="feather-edit"></i>
-                                            </a>
-                                            <a href="javascript:void(0)" class="btn btn-sm bg-danger-light xoa-nv" data-id="{{$nv->id}}" id="show-popup-confirm" data-toggle="modal" data-target="#xoa-nv">
-                                                <i class="feather-trash"></i>
-                                            </a>
+
                                         </div>
                                     </td>
                                 </tr>

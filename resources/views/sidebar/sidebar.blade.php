@@ -15,8 +15,9 @@
     <li class="submenu">
         <a href="#" class="subdrop"><i class="feather-user"></i> <span> Nhân Viên</span> <span class="menu-arrow"></span></a>
         <ul style="display: block;">
-        <li><a href="{{ url('nhanvien') }}"><i class="feather-chevron-right"></i> Danh sách</a></li>
+        <li><a href="{{ url('nhanvien') }}"><i class="feather-chevron-right"></i> Danh sách CBNV</a></li>
         <li><a href="{{route('nhanvien.them')}}" class=""><i class="feather-chevron-right"></i> Thêm</a></li>
+        <li><a href="{{url('/nhanvien/bangluong')}}"><i class="feather-chevron-right"></i> Quản lý tiền lương</a></li>
         </ul>
     </li>
 
@@ -34,6 +35,8 @@
         <li><a href="{{ url('chucdanh/themcd') }}" class=""><i class="feather-chevron-right"></i> Thêm</a></li>
         </ul>
     </li>
+
+    
     
 
 

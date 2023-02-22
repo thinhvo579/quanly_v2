@@ -11,6 +11,7 @@ class Luong extends Model
     protected $table = 'table_luong';
     protected $fillable = [
         'ma_nhan_vien',
+        'nam',
         'thang1',
         'thang2',
         'thang3',

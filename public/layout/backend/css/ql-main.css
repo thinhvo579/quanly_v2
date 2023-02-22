@@ -1,27 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,100&display=swap');
 
+.select-year {
+    display: flex;
+    align-items: center;
+}
+
+.btn-salary {
+    font-size: 11px;
+    color: blue;
+}
+
+.btn-salary:hover {
+    text-decoration: underline;
+}
+
+.select-year label {
+    margin-bottom: 0;
+    margin-right: 12px;
+}
+
+.select-year select option,
+.select-year select {
+    font-size: 13px;
+}
+
 .bg-login-image {
     background: url(/images/login-image.jpg);
     background-position: center;
     background-size: cover;
 }
-.canvasjs-chart-credit{
-    display:  none !important;
+
+.canvasjs-chart-credit {
+    display: none !important;
 }
+
 body {
     height: 100%;
 }
-.bg-comman{
+
+.bg-comman {
     margin-bottom: 20px;
 }
-.page-title{
+
+.page-title {
     position: absolute;
     top: 3px;
     left: 25px;
 }
-.page-header .col{
+
+.page-header .col {
     justify-content: flex-end;
 }
+
 .table-filter .filter-group {
     display: flex;
     align-items: center;
@@ -173,8 +203,8 @@ body {
 }
 
 .bg-gradient-primary {
-    background-color: #4e73df;
-
+    /* background-color: #4e73df; */
+    background-color: #08123b;
 }
 
 .navbar-nav {
@@ -430,6 +460,8 @@ button {
 #overlay {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 99999;
     width: 100%;
     height: 100%;
@@ -730,14 +762,20 @@ span.relative svg {}
     .bang-luong {
         font-size: 12px;
     }
-    #myTable_length, #myTable_filter, #myTable_info, #myTable_paginate  {
+
+    #myTable_length,
+    #myTable_filter,
+    #myTable_info,
+    #myTable_paginate {
         font-size: 12px;
     }
-    #myTable_filter{
+
+    #myTable_filter {
         display: none;
     }
-    .message-cd{
+
+    .message-cd {
         font-size: 12px;
-    margin-bottom: 0;
+        margin-bottom: 0;
     }
 }

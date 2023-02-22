@@ -61,7 +61,10 @@ Route::get('/nhanvien/themnv', [NhanVienController::class, 'nvAddView'])->name('
 Route::post('/nhanvien/themnv', [NhanVienController::class, 'nvAdd']);
 Route::delete('/nhanvien/xoanv/{id}', [NhanVienController::class, 'nvDelete']);
 Route::post('/nhanvien/cap-nhat-bang-luong/{maNv}',[NhanVienController::class, 'luongNv']);
-
+Route::get('/nhanvien/bangluong',[NhanVienController::class, 'bangLuong']);
+Route::get('/nhanvien/bangluong/{id}',[NhanVienController::class, 'getBangLuong']);
+Route::get('/nhanvien/nhapluong/{id}',[NhanVienController::class, 'postBangLuong']);
+Route::get('/nhanvien/them-bang-luong/{id}',[NhanVienController::class, 'themBangLuong']);
 // -----------------------------------------ChucDanh-----------------------------------------
 Route::get('/chucdanh',[ChucDanhController::class, 'cdListView']);
 Route::get('/chucdanh/xemcd/{cd}',[ChucDanhController::class, 'cdViewDetail'])->name('chucdanh.xem');

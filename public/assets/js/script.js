@@ -1,4 +1,62 @@
 $(document).ready(function () {
+    const d = new Date();
+    var year = d.getFullYear();
+    $('#year-salary').on('change', function getYear(){
+        var year_selected = $(this).find(":selected").val();
+        var ma_nv = $('#nv_code').text();
+        $("#overlay").show();
+    // alert(year);
+        $.ajax({
+         type: 'GET',
+         url: '/nhanvien/bangluong/'+ma_nv,
+         data: {year_selected : year_selected},
+         dataType: 'json',
+         success: function(response){
+            setTimeout(function() {
+                $("#overlay").hide();
+            }, 500);
+          
+             console.log(response);
+             if(response.code == 200){
+             $('#thang1').val(response.detail.thang1);
+             $('#thang2').val(response.detail.thang2);
+             $('#thang3').val(response.detail.thang3);
+             $('#thang4').val(response.detail.thang4);
+             $('#thang5').val(response.detail.thang5);
+             $('#thang6').val(response.detail.thang6);
+             $('#thang7').val(response.detail.thang7);
+             $('#thang8').val(response.detail.thang8);
+             $('#thang9').val(response.detail.thang9);
+             $('#thang10').val(response.detail.thang10);
+             $('#thang11').val(response.detail.thang11);
+             $('#thang12').val(response.detail.thang11);
+
+             }
+             else{
+                $('#thang1').val('0');
+                $('#thang2').val('0');
+                $('#thang3').val('0');
+                $('#thang4').val('0');
+                $('#thang5').val('0');
+                $('#thang6').val('0');
+                $('#thang7').val('0');
+                $('#thang8').val('0');
+                $('#thang9').val('0');
+                $('#thang10').val('0');
+                $('#thang11').val('0');
+                $('#thang12').val('0');
+   
+                }
+         }
+         });
+    });
+    // $("#year-salary").val(year);
+    // $("#year-salary").datepicker({
+    //     format: "yyyy",
+    //     viewMode: "years", 
+    //     minViewMode: "years"
+    // });
+    $('#year-salary').change();
     if ($(".datetimepicker").length > 0) {
         $(".datetimepicker").datepicker({
             shortYearCutoff: 1,

@@ -13,8 +13,10 @@
 <link rel="stylesheet" href="/layout/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-<link href="/layout/backend/css/ql-main.css" rel="stylesheet">
+
 <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<link href="/layout/backend/css/ql-main.css" rel="stylesheet">
 {{-- <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}"> --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -191,6 +193,9 @@
     <script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/layout/backend/js/phong-ban.js"></script>
     <script src="/layout/backend/js/nhan-vien.js"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
