@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    // $('.vertical .progress-fill span').each(function(){
+    //     var percent = $(this).html();
+    //     var pTop = 100 - ( percent.slice(0, percent.length - 1) ) + "%";
+    //     $(this).parent().css({
+    //       'height' : percent,
+    //       'top' : pTop
+    //     });
+    //   });
     $(".input-number input").keypress(function (e) {
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
             //  $("#errmsg").html("Number Only").stop().show().fadeOut("slow");
@@ -7,6 +15,31 @@ $(document).ready(function () {
     });
     function getNumberWithCommas(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+   
+    function showGraph(){
+
+        const ctx = document.getElementById('chartBar1');
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['1', '2', '3', '4', '5', '6','7', '8', '9', '10', '11', '12'],
+            datasets: [{
+              label: '# of Votes',
+              data: total,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+        
     }
     $("#year-salary").on("change", function () {
         var year_selected = $(this).find(":selected").val();
@@ -21,12 +54,13 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $("#overlay").hide();
                 }, 400);
-
-                console.log(response.luong_nam.total);
+                //console.log(response.luong_nam.total);
                 if (response.code == 200) {
+                    // ================
                     $("#thang1").val(
                         getNumberWithCommas(response.detail.thang1)
                     );
+
                     $("#thang2").val(
                         getNumberWithCommas(response.detail.thang2)
                     );
@@ -64,6 +98,39 @@ $(document).ready(function () {
                         "Tổng Lương Trong Năm: " +
                             getNumberWithCommas(response.luong_nam.total)
                     );
+                    // 
+                   
+                   var total = [response.detail.thang1,response.detail.thang2,response.detail.thang3,response.detail.thang4,response.detail.thang5,response.detail.thang6,
+                    response.detail.thang7,response.detail.thang8,response.detail.thang9,response.detail.thang10,response.detail.thang11,response.detail.thang12]; 
+
+                    console.log(total);
+                    $("canvas#chartBar1").remove();
+                    $("div.chartreport").append('<canvas id="chartBar1" class="animated fadeIn" height="120"></canvas>');
+
+                    const ctx = document.getElementById('chartBar1');
+
+                    chartreport=   new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 0', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+              label: response.detail.nam,
+              data: total,
+              borderWidth: 1,
+              backgroundColor: "#664dc9",
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+                    
+                    // 
+                    
                 } else {
                     $("#thang1").val("0");
                     $("#thang2").val("0");
@@ -98,7 +165,7 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $("#overlay").hide();
                     }, 400);
-    
+
                     console.log(response);
                     $("#text-result").html(
                         "Kết quả thống kê lương " +
@@ -111,13 +178,11 @@ $(document).ready(function () {
                     );
                 },
             });
-        }
-        else{
+        } else {
             setTimeout(function () {
                 $("#overlay").hide();
             }, 400);
         }
-        
     });
     // $("#year-salary").val(year);
     // $("#year-salary").datepicker({

@@ -65,7 +65,13 @@ class NhanVienController extends Controller
     ->where('table_luong.ma_nhan_vien', $id)
     ->where('table_luong.nam', $request->year_selected)
     ->first();
-
+    $stats = DB::table('table_luong')
+    ->select('table_luong.nam', 
+    DB::raw('table_luong.thang1 + table_luong.thang2 + table_luong.thang3 + table_luong.thang4 + table_luong.thang5 + table_luong.thang6 + table_luong.thang7 + table_luong.thang8 + table_luong.thang9 + table_luong.thang10 + table_luong.thang11 + table_luong.thang12 as total' )
+    )
+   ->join('table_nhan_vien', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
+   ->where('table_luong.ma_nhan_vien',  $id)
+   ->get();
 
    // dd($luong_nam);
    // return( $luong_thang);
@@ -76,11 +82,11 @@ class NhanVienController extends Controller
     // ->get();
         if ($luong_thang) {
             return response()->json([
-                'message' => "Success", "code" => "200",'detail'=> $luong_thang, 'luong_nam'=> $luong_nam
+                'message' => "Success", "code" => "200",'detail'=> $luong_thang, 'luong_nam'=> $luong_nam, ' stats'=> $stats
             ]);
         } else {
             return response()->json([
-                'message' => "Error", "code" => "500",'detail'=> $luong_thang, 'luong_nam'=> $luong_nam
+                'message' => "Error", "code" => "500",'detail'=> $luong_thang, 'luong_nam'=> $luong_nam, ' stats'=> $stats
             ]);
          }
 
@@ -101,7 +107,7 @@ class NhanVienController extends Controller
     ->where('table_luong.ma_nhan_vien', $id)
     ->where('table_luong.nam', $request->year_selected)
     ->first();
-
+    
 
    // dd($luong_nam);
    // return( $luong_thang);
@@ -171,7 +177,16 @@ class NhanVienController extends Controller
     ->first();
    // dd($luong_thang);
    // return response()->json($luong_thang);
-        return view('nhanvien.nv-detail', compact('nv','ten_chuc_danh','ten_pb'));
+   $stats = DB::table('table_luong')
+   ->select('table_luong.nam', 
+   DB::raw('table_luong.thang1 + table_luong.thang2 + table_luong.thang3 + table_luong.thang4 + table_luong.thang5 + table_luong.thang6 + table_luong.thang7 + table_luong.thang8 + table_luong.thang9 + table_luong.thang10 + table_luong.thang11 + table_luong.thang12 as total' )
+   )
+  ->join('table_nhan_vien', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
+  ->where('table_luong.ma_nhan_vien', $nv->ma_nhan_vien)
+  ->orderBy('table_luong.nam', 'asc')
+  ->get();
+   
+        return view('nhanvien.nv-detail', compact('nv','ten_chuc_danh','ten_pb', 'stats'));
         
     }
     public function nvEdit($id)

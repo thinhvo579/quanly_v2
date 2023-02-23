@@ -26,8 +26,8 @@
 
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
+                <div class="row ct-nv">
+                    <div class="col-12">
                         <div class="student-personals-grp">
                             <div class="card">
                                 <div class="card-body">
@@ -122,11 +122,11 @@
                         </div>
                         
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-12">
                             <div class="row">
                                 <div class="col-12 col-sm-12">
-                                    <div class="heading-detail">
-                                        <h4>Chi Tiết Bảng Lương</h4>
+                                    <div class="heading-detail " style="margin-top: 20px;">
+                                        <h4>Thống Kê Lương Hàng Tháng</h4>
                                         <span id="nv_code" hidden>{{$nv->ma_nhan_vien}}</span>
                                     </div>
                                     <div class="row">
@@ -135,11 +135,15 @@
                                                 <label>Năm</span></label>
                                                 {{-- <input type="text" name="nam" id="year-salary"> --}}
                                                 <select  id="year-salary">
+                                                   <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                   <option value="2018">2018</option>
                                                    <option value="2019">2019</option>
                                                    <option value="2020">2020</option>
                                                    <option value="2021">2021</option>
                                                    <option value="2022">2022</option>
                                                    <option value="2023" selected>2023</option>
+                                                   <option value="2022">2024</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -225,7 +229,67 @@
                                         </div>
         
                                     </div>
-        
+                                    <!-- Vertical, rounded -->
+
+
+                                    <div class="chartreport">
+                                        <canvas id="chartBar1" class="h-300"></canvas>
+                                        
+                                    </div>
+                                    <div class="heading-detail mt-8" style="margin-top:20px;">
+                                        <h4>Thống Kê Lương Hàng Năm</h4>
+                                       
+                                    </div>
+                                    <div class="chartreport2">
+                                        <canvas id="chartBar2" class="h-300"></canvas>
+                                        
+                                    </div>
+                                    <div>
+
+                                   {{-- {{$stats}} --}}
+                                @php   $items = array(); $total_money = array();
+                                   foreach($stats as $username) {
+                                    $items[] = $username->nam;
+                                   }
+                                   foreach($stats as $username) {
+                                    $total_money[] = $username->total;
+                                   }
+                                   //print_r($items);
+                                   foreach($stats as $row){
+        $data[] = $row;
+    }
+                                   //echo json_encode($data);
+                                   
+@endphp
+                              
+                                        <script>
+                                             var ctx2 = document.getElementById("chartBar2").getContext("2d");
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: @php echo json_encode($items); @endphp,
+      datasets: [
+        {
+          label: "Thống kê lương hàng năm",
+          data: @php echo json_encode($total_money); @endphp,
+          backgroundColor: "#44c4fa",
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true,
+      legend: { display: false, labels: { display: false } },
+      scales: {
+        yAxes: [{ ticks: { beginAtZero: true, fontSize: 10, max: 80 } }],
+        xAxes: [
+          { barPercentage: 0.6, ticks: { beginAtZero: true, fontSize: 11 } },
+        ],
+      },
+    },
+  });
+                                        </script>
+                                    </div>
                                 </div>
                             </div>
                     </div>

@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/layout/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-
+<script src="{{ URL::to('assets/plugins/chartjs/chart.min.js') }}"></script>
 <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 <link href="/layout/backend/css/ql-main.css" rel="stylesheet">

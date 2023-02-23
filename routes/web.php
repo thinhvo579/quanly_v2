@@ -83,4 +83,4 @@ Route::get('/tim-kiem-chuc-danh',[ChucDanhController::class, 'querySearchCd']);
 Route::get('/thongkeluong',[HomeController::class, 'thongKeLuong']);
 Route::get('/thongkeluong1',[HomeController::class, 'thongKeLuong1']);
 // Route::get('/thongkeluong-query',[HomeController::class, 'thongKeLuong']);
-
+Route::get('/thongkeluongnv',[HomeController::class, 'thongKeLuongNv']);
