@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="form-group">
-                        <select name="" id="">
+                        <select name="" id="search-pb" class="form-control">
                             <option value="">Phòng Ban</option>
                             @foreach ($phongBan as $pb)
                             <option value="{{$pb->ma_phong_ban}}">{{$pb->ten_phong_ban}}</option>
@@ -82,7 +82,7 @@
                                     <td>
                                         <div class="actions ">
 
-                                            <a href="{{ url('nhanvien/bangluong/'.$nv->id)}}" class="btn btn-sm bg-danger-light btn-salary">
+                                            <a href="{{ url('nhanvien/suanv/'.$nv->id)}}" class="btn btn-sm bg-danger-light btn-salary">
                                                 Thêm Bảng Lương
                                             </a>
 

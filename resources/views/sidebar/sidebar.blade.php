@@ -35,6 +35,13 @@
         <li><a href="{{ url('chucdanh/themcd') }}" class=""><i class="feather-chevron-right"></i> Thêm</a></li>
         </ul>
     </li>
+    <li class="submenu">
+        <a href="#" class="subdrop"><i class="feather-folder"></i> <span> Thống Kê</span> <span class="menu-arrow"></span></a>
+        <ul style="display: block;">
+        <li><a href="{{ url('thongkeluong') }}"><i class="feather-chevron-right"></i>Tiền Lương</a></li>
+       
+        </ul>
+    </li>
 
     
     

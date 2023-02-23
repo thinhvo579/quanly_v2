@@ -1,11 +1,18 @@
 $(document).ready(function () {
-    const d = new Date();
-    var year = d.getFullYear();
-    $('#year-salary').on('change', function getYear(){
+
+    $(".input-number input").keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //  $("#errmsg").html("Number Only").stop().show().fadeOut("slow");
+         return false;
+       }
+      });
+      function getNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    $('#year-salary').on('change', function(){
         var year_selected = $(this).find(":selected").val();
         var ma_nv = $('#nv_code').text();
-        $("#overlay").show();
-    // alert(year);
+       $("#overlay").show();
         $.ajax({
          type: 'GET',
          url: '/nhanvien/bangluong/'+ma_nv,
@@ -14,23 +21,23 @@ $(document).ready(function () {
          success: function(response){
             setTimeout(function() {
                 $("#overlay").hide();
-            }, 500);
+            }, 400);
           
-             console.log(response);
+             console.log(response.luong_nam.total);
              if(response.code == 200){
-             $('#thang1').val(response.detail.thang1);
-             $('#thang2').val(response.detail.thang2);
-             $('#thang3').val(response.detail.thang3);
-             $('#thang4').val(response.detail.thang4);
-             $('#thang5').val(response.detail.thang5);
-             $('#thang6').val(response.detail.thang6);
-             $('#thang7').val(response.detail.thang7);
-             $('#thang8').val(response.detail.thang8);
-             $('#thang9').val(response.detail.thang9);
-             $('#thang10').val(response.detail.thang10);
-             $('#thang11').val(response.detail.thang11);
-             $('#thang12').val(response.detail.thang11);
-
+             $('#thang1').val(getNumberWithCommas(response.detail.thang1));
+             $('#thang2').val(getNumberWithCommas(response.detail.thang2));
+             $('#thang3').val(getNumberWithCommas(response.detail.thang3));
+             $('#thang4').val(getNumberWithCommas(response.detail.thang4));
+             $('#thang5').val(getNumberWithCommas(response.detail.thang5));
+             $('#thang6').val(getNumberWithCommas(response.detail.thang6));
+             $('#thang7').val(getNumberWithCommas(response.detail.thang7));
+             $('#thang8').val(getNumberWithCommas(response.detail.thang8));
+             $('#thang9').val(getNumberWithCommas(response.detail.thang9));
+             $('#thang10').val(getNumberWithCommas(response.detail.thang10));
+             $('#thang11').val(getNumberWithCommas(response.detail.thang11));
+             $('#thang12').val(getNumberWithCommas(response.detail.thang11));
+$('#year_salary').text('Tổng Lương Trong Năm: '+getNumberWithCommas(response.luong_nam.total));
              }
              else{
                 $('#thang1').val('0');
@@ -45,6 +52,7 @@ $(document).ready(function () {
                 $('#thang10').val('0');
                 $('#thang11').val('0');
                 $('#thang12').val('0');
+                $('#year_salary').text('Tổng Lương Trong Năm: 0');
    
                 }
          }

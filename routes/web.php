@@ -55,6 +55,7 @@ Route::post('/phongban/xoa-phong-ban/{id}', [PhongBanController::class, 'xoapb']
 // -----------------------------------------NhanVien-----------------------------------------
 Route::get('/nhanvien',[NhanVienController::class, 'nvList'])->name('nhanvien.xem');
 Route::get('/nhanvien/xemnv/{nv}',[NhanVienController::class, 'nvView']);
+Route::post('/nhanvien/xemnv/{nv}',[NhanVienController::class, 'luongNvDetail']);
 Route::get('/nhanvien/suanv/{nv}',[NhanVienController::class, 'nvEdit'])->name('nhanvien.edit');
 Route::post('/nhanvien/suanv/{nv}',[NhanVienController::class, 'nvUpdate']);
 Route::get('/nhanvien/themnv', [NhanVienController::class, 'nvAddView'])->name('nhanvien.them');
@@ -79,3 +80,5 @@ Route::get('/tim-kiem-nhan-vien',[NhanVienController::class, 'querySearch']);
 Route::get('/tim-kiem-phong-ban',[PhongBanController::class, 'querySearchPb']);
 Route::get('/tim-kiem-chuc-danh',[ChucDanhController::class, 'querySearchCd']);
 // Route::get('ket-qua-tim-kiem', [SearchController::class, 'searchResult'])->name('search.result');
+Route::get('/thongkeluong',[HomeController::class, 'thongKeLuong']);
+

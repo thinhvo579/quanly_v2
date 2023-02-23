@@ -27,12 +27,12 @@
                                 <div class="col-12">
                                     <h5 class="form-title student-info">Thông tin nhân viên <span><a href="javascript:;"><i class="feather-more-vertical"></i></a></span></h5>
                                 </div>
-                                <div class="col-12 col-sm-4">
+                                {{-- <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Mã Nhân Viên <span class="login-danger">*</span></label>
                                         <input class="form-control" id="ma_nhan_vien" name="ma_nhan_vien" type="text" value="{{$nhanVien->ma_nhan_vien}}">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Tên Nhân Viên <span class="login-danger">*</span></label>
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
+                                    <div class="form-group local-forms input-number">
                                         <label>Số điện thoại </label>
                                         <input class="form-control" id="so_dt" name="so_dt" type="text" value="{{$nhanVien->so_dt}}">
                                     </div>
@@ -145,8 +145,14 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-8">
+                                    <div class="form-group local-forms year-total">
+                                        
+                                        <h6 id="year_salary"></h6>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row">
+                            <div class="row input-number">
                                 <div class="col-12 col-sm-3">
                                     <div class="form-group local-forms">
                                         <label>Tháng 1</span></label>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Luong;
 use App\Models\NhanVien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -169,5 +170,35 @@ class HomeController extends Controller
                 'message' => "Cập nhật thất bại", "code" => "500"
             ]);
         }
+    }
+    public function thongKeLuong(){
+        $phongBan = PhongBan::all();
+
+    $result = DB::table('table_luong')
+
+    ->select([
+        'ma_phong_ban',
+        DB::raw("SUM(thang1) as total_thang1"),
+        DB::raw("SUM(thang2) as total_thang2"),
+        DB::raw("SUM(thang3) as total_thang3"),
+        DB::raw("SUM(thang4) as total_thang4"),
+        DB::raw("SUM(thang5) as total_thang5"),
+        DB::raw("SUM(thang6) as total_thang6"),
+        DB::raw("SUM(thang7) as total_thang7"),
+        DB::raw("SUM(thang8) as total_thang8"),
+        DB::raw("SUM(thang9) as total_thang9"),
+        DB::raw("SUM(thang10) as total_thang10"),
+        DB::raw("SUM(thang11) as total_thang11"),
+        DB::raw("SUM(thang12) as total_thang12"),
+    ])
+    ->join('table_nhan_vien', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
+        ->where('table_luong.nam', '2016')
+        ->where('table_nhan_vien.ma_phong_ban', 'IT')
+    ->groupBy('ma_phong_ban')
+    ->first();
+
+    return  $result->total_thang1+$result->total_thang2+$result->total_thang3+$result->total_thang4+$result->total_thang5+$result->total_thang6
+    +$result->total_thang7+$result->total_thang8+$result->total_thang9+$result->total_thang10+$result->total_thang11+$result->total_thang12;
+        return view('thongkeluong', compact('phongBan','total_pb'));
     }
 }

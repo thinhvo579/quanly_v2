@@ -123,41 +123,111 @@
                         
                     </div>
                     <div class="col-lg-8">
-                        <div class="student-personals-grp">
-                            <div class="card mb-0">
-                                <div class="card-body">
-                                    
+                            <div class="row">
+                                <div class="col-12 col-sm-12">
                                     <div class="heading-detail">
-                                        <h4>Thống kê bảng lương</h4>
+                                        <h4>Chi Tiết Bảng Lương</h4>
+                                        <span id="nv_code" hidden>{{$nv->ma_nhan_vien}}</span>
                                     </div>
-                                    <div class="bang-luong d-flex">
-                                        <div class="w-33">
-                                            <p>Tháng 1: {{number_format($luong->thang1 ?? '0', 0, '', ',')}}</p>
-                                            <p>Tháng 2: {{number_format($luong->thang2 ?? '0', 0, '', ',')}}</p>
-                                            <p>Tháng 3: {{number_format($luong->thang3 ?? '0', 0, '', ',')}}</p>
-                                            <p>Tháng 4: {{number_format($luong->thang4 ?? '0', 0, '', ',')}}</p>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group local-forms select-year">
+                                                <label>Năm</span></label>
+                                                {{-- <input type="text" name="nam" id="year-salary"> --}}
+                                                <select  id="year-salary">
+                                                   <option value="2019">2019</option>
+                                                   <option value="2020">2020</option>
+                                                   <option value="2021">2021</option>
+                                                   <option value="2022">2022</option>
+                                                   <option value="2023" selected>2023</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="w-33">
-                                            <p>Tháng 5: {{number_format($luong->thang5 ?? '0', 0, '', ',')}}</p>
-                                        <p>Tháng 6: {{number_format($luong->thang6 ?? '0', 0, '', ',')}}</p>
-                                        <p>Tháng 7: {{number_format($luong->thang7 ?? '0', 0, '', ',')}}</p>
-                                        <p>Tháng 8: {{number_format($luong->thang8 ?? '0', 0, '', ',')}}</p>
-                                        </div><div class="w-33">
-                                            <p>Tháng 0: {{number_format($luong->thang9 ?? '0', 0, '', ',')}}</p>
-                                            <p>Tháng 10: {{number_format($luong->thang10 ?? '0', 0, '', ',')}}</p>
-                                            <p>Tháng 11: {{number_format($luong->thang11 ?? '0', 0, '', ',')}}</p>
-                                            <p>Tháng 12: {{number_format($luong->thang12 ?? '0', 0, '', ',')}}</p>
+                                        <div class="col-8">
+                                            <div class="form-group local-forms year-total">
+                                                
+                                                <h6 id="year_salary"></h6>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p>Tổng lương trong năm: {{number_format($luong->thang1 + $luong->thang2 +$luong->thang3+$luong->thang4+$luong->thang5+$luong->thang6+$luong->thang7+$luong->thang8+$luong->thang9+$luong->thang10+$luong->thang11+$luong->thang12)  }} VNĐ</p>
-                                        </div>
-                                       
                                     </div>
-                                    
-                                    
+                                    <div class="row input-number nv-detail-luong">
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 1</span></label>
+                                                <input class="form-control" id="thang1" name="thang1" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 2</span></label>
+                                                <input class="form-control" id="thang2" name="thang2" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 3</span></label>
+                                                <input class="form-control" id="thang3" name="thang3" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 4</span></label>
+                                                <input class="form-control" id="thang4" name="thang4" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 5</span></label>
+                                                <input class="form-control" id="thang5" name="thang5" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 6</span></label>
+                                                <input class="form-control" id="thang6" name="thang6" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 7</span></label>
+                                                <input class="form-control" id="thang7" name="thang7" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 8</span></label>
+                                                <input class="form-control" id="thang8" name="thang8" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 9</span></label>
+                                                <input class="form-control" id="thang9" name="thang9" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 10</span></label>
+                                                <input class="form-control" id="thang10" name="thang10" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 11</span></label>
+                                                <input class="form-control" id="thang11" name="thang11" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 12</span></label>
+                                                <input class="form-control" id="thang12" name="thang12" type="text" value="">
+                                            </div>
+                                        </div>
+        
+                                    </div>
+        
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -456,7 +456,21 @@ button {
 #them-nhan-vien .modal-body .d-flex label {
     width: 20%;
 }
+.year-total{
+    text-align: right;
 
+}
+#search-pb{
+    height: 31px !important;
+}
+.nv-detail-luong input{
+pointer-events: none;
+border: 0 !important;
+padding: 0 !important;
+}
+.year-total h6{
+    font-size: 13px;
+}
 #overlay {
     position: fixed;
     top: 0;
