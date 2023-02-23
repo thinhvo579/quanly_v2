@@ -81,4 +81,6 @@ Route::get('/tim-kiem-phong-ban',[PhongBanController::class, 'querySearchPb']);
 Route::get('/tim-kiem-chuc-danh',[ChucDanhController::class, 'querySearchCd']);
 // Route::get('ket-qua-tim-kiem', [SearchController::class, 'searchResult'])->name('search.result');
 Route::get('/thongkeluong',[HomeController::class, 'thongKeLuong']);
+Route::get('/thongkeluong1',[HomeController::class, 'thongKeLuong1']);
+// Route::get('/thongkeluong-query',[HomeController::class, 'thongKeLuong']);
 

@@ -28,12 +28,12 @@ class HomeController extends Controller
 
         );
         $count_age_30 = DB::table('table_nhan_vien')
-        ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) < 30 ")
-        ->count();
+            ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) < 30 ")
+            ->count();
         $count_age_30_45 = DB::table('table_nhan_vien')
-        ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) > 30 ")
-        ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) < 45 ")
-        ->count();
+            ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) > 30 ")
+            ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) < 45 ")
+            ->count();
         $count_age_45 = DB::table('table_nhan_vien')
             ->whereRaw("TIMESTAMPDIFF( YEAR, ngay_sinh, CURDATE()) >= 45 ")
             ->count();
@@ -44,7 +44,7 @@ class HomeController extends Controller
 
         );
 
-         //return $count_age_45;
+        //return $count_age_45;
         return view('welcome', compact('countNv', 'countPb', 'genderArr', 'dataAges'));
     }
     public function getLogout()
@@ -171,34 +171,85 @@ class HomeController extends Controller
             ]);
         }
     }
-    public function thongKeLuong(){
+    public function thongKeLuong1(Request $request)
+    {
+// dd($request->pb_select);
+        if ($request->pb_select == '0') {
+            $result = DB::table('table_luong')
+                ->select([
+                    DB::raw("SUM(thang1) as total_thang1"),
+                    DB::raw("SUM(thang2) as total_thang2"),
+                    DB::raw("SUM(thang3) as total_thang3"),
+                    DB::raw("SUM(thang4) as total_thang4"),
+                    DB::raw("SUM(thang5) as total_thang5"),
+                    DB::raw("SUM(thang6) as total_thang6"),
+                    DB::raw("SUM(thang7) as total_thang7"),
+                    DB::raw("SUM(thang8) as total_thang8"),
+                    DB::raw("SUM(thang9) as total_thang9"),
+                    DB::raw("SUM(thang10) as total_thang10"),
+                    DB::raw("SUM(thang11) as total_thang11"),
+                    DB::raw("SUM(thang12) as total_thang12"),
+                ])
+                ->join('table_nhan_vien', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
+                ->where('table_luong.nam', $request->year_select)
+                ->first();
+                if ($result) {
+                    $salary_pb =  $result->total_thang1 + $result->total_thang2 + $result->total_thang3 + $result->total_thang4 + $result->total_thang5 + $result->total_thang6
+                        + $result->total_thang7 + $result->total_thang8 + $result->total_thang9 + $result->total_thang10 + $result->total_thang11 + $result->total_thang12;
+                    return response()->json([
+                        'phongban' =>  'Toàn Cơ Quan', "nam" => $request->year_select, 'total' =>  $salary_pb
+                    ]);
+                } else {
+                    return response()->json([
+                        'phongban' =>  'Toàn Cơ Quan', "nam" => $request->year_select, 'total' =>  0
+                    ]);
+                }
+                
+        } else {
+            $pb_name = PhongBan::where('ma_phong_ban', $request->pb_select)->select('ten_phong_ban')->first();
+            $ten_pb = $pb_name->ten_phong_ban;
+            $result = DB::table('table_luong')
+                ->select([
+                    'ma_phong_ban',
+                    DB::raw("SUM(thang1) as total_thang1"),
+                    DB::raw("SUM(thang2) as total_thang2"),
+                    DB::raw("SUM(thang3) as total_thang3"),
+                    DB::raw("SUM(thang4) as total_thang4"),
+                    DB::raw("SUM(thang5) as total_thang5"),
+                    DB::raw("SUM(thang6) as total_thang6"),
+                    DB::raw("SUM(thang7) as total_thang7"),
+                    DB::raw("SUM(thang8) as total_thang8"),
+                    DB::raw("SUM(thang9) as total_thang9"),
+                    DB::raw("SUM(thang10) as total_thang10"),
+                    DB::raw("SUM(thang11) as total_thang11"),
+                    DB::raw("SUM(thang12) as total_thang12"),
+                ])
+                ->join('table_nhan_vien', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
+                ->where('table_luong.nam', $request->year_select)
+                ->where('table_nhan_vien.ma_phong_ban', $request->pb_select)
+                ->groupBy('ma_phong_ban')
+                ->first();
+                if ($result) {
+                    $salary_pb =  $result->total_thang1 + $result->total_thang2 + $result->total_thang3 + $result->total_thang4 + $result->total_thang5 + $result->total_thang6
+                        + $result->total_thang7 + $result->total_thang8 + $result->total_thang9 + $result->total_thang10 + $result->total_thang11 + $result->total_thang12;
+                    return response()->json([
+                        'phongban' =>  $ten_pb, "nam" => $request->year_select, 'total' =>  $salary_pb
+                    ]);
+                } else {
+                    return response()->json([
+                        'phongban' =>  $ten_pb, "nam" => $request->year_select, 'total' =>  0
+                    ]);
+                }
+        }
+
+        
+    }
+    public function thongKeLuong()
+    {
+
         $phongBan = PhongBan::all();
 
-    $result = DB::table('table_luong')
-
-    ->select([
-        'ma_phong_ban',
-        DB::raw("SUM(thang1) as total_thang1"),
-        DB::raw("SUM(thang2) as total_thang2"),
-        DB::raw("SUM(thang3) as total_thang3"),
-        DB::raw("SUM(thang4) as total_thang4"),
-        DB::raw("SUM(thang5) as total_thang5"),
-        DB::raw("SUM(thang6) as total_thang6"),
-        DB::raw("SUM(thang7) as total_thang7"),
-        DB::raw("SUM(thang8) as total_thang8"),
-        DB::raw("SUM(thang9) as total_thang9"),
-        DB::raw("SUM(thang10) as total_thang10"),
-        DB::raw("SUM(thang11) as total_thang11"),
-        DB::raw("SUM(thang12) as total_thang12"),
-    ])
-    ->join('table_nhan_vien', 'table_nhan_vien.ma_nhan_vien', '=', 'table_luong.ma_nhan_vien')
-        ->where('table_luong.nam', '2016')
-        ->where('table_nhan_vien.ma_phong_ban', 'IT')
-    ->groupBy('ma_phong_ban')
-    ->first();
-
-    return  $result->total_thang1+$result->total_thang2+$result->total_thang3+$result->total_thang4+$result->total_thang5+$result->total_thang6
-    +$result->total_thang7+$result->total_thang8+$result->total_thang9+$result->total_thang10+$result->total_thang11+$result->total_thang12;
-        return view('thongkeluong', compact('phongBan','total_pb'));
+       
+        return view('thongkeluong', compact('phongBan'));
     }
 }
