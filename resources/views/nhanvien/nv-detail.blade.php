@@ -247,14 +247,14 @@
                                     <div>
 
                                    {{-- {{$stats}} --}}
-                                @php   $items = array(); $total_money = array();
-                                   foreach($stats as $username) {
-                                    $items[] = $username->nam;
+                                @php   $year_stt = array(); $total_money = array();
+                                   foreach($stats as $row) {
+                                    $year_stt[] = $row->nam;
                                    }
-                                   foreach($stats as $username) {
-                                    $total_money[] = $username->total;
+                                   foreach($stats as $row) {
+                                    $total_money[] = $row->total;
                                    }
-                                   //print_r($items);
+                                   //print_r($year_stt);
                                    foreach($stats as $row){
         $data[] = $row;
     }
@@ -267,7 +267,7 @@
   new Chart(ctx2, {
     type: "bar",
     data: {
-      labels: @php echo json_encode($items); @endphp,
+      labels: @php echo json_encode($year_stt); @endphp,
       datasets: [
         {
           label: "Thống kê lương hàng năm",
