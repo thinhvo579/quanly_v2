@@ -42,7 +42,7 @@ Route::controller(NhanVienController::class)->group(function(){
 });
 
 
-
+Route::get('/hoso}',[HomeController::class, 'viewprofile'])->middleware(checklogout::class)->name('index.hoso');
 // -----------------------------------------PhongBan-----------------------------------------
 Route::get('/phongban',[PhongBanController::class, 'phongBan'])->middleware(checklogout::class);
 Route::get('/phongban/xempb/{pb}',[PhongBanController::class, 'viewpb'])->middleware(checklogout::class)->name('phongban.xem');

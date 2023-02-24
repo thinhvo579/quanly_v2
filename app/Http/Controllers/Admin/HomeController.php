@@ -52,6 +52,10 @@ class HomeController extends Controller
         Auth::logout();
         return redirect()->intended('/dangnhap');
     }
+    public function viewprofile()
+    {
+        return view('userprofile');
+    }
     public function nhanSu()
     {
         return view('backend.nhansu');

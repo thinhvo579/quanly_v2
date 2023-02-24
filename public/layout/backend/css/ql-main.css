@@ -80,7 +80,9 @@
 .canvasjs-chart-credit {
     display: none !important;
 }
-
+.profile-header{
+    padding-bottom: 15px;
+}
 body {
     height: 100%;
 }
@@ -740,12 +742,16 @@ span.relative svg {}
     justify-content: flex-end;
 }
 @media screen and (max-width: 1440px) {
+    #per_details_tab .card-title span{ font-size: 16px;}
+    #per_details_tab .row p{ font-size: 13px;}
     .sidebar li a {
 
         font-size: 12px;
 
     }
-    
+    .profile-menu .nav-item a{
+        font-size: 13px;
+    }
     .sidebar ul a {
     
         font-size: 12px;

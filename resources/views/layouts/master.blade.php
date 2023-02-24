@@ -78,12 +78,12 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="/images/undraw_profile.svg">
+                                    src="{{Auth::user()->profile_pic}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{asset('/admin/user-profile')}}">
+                                <a class="dropdown-item" href="{{route('index.hoso')}}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Hồ sơ
                                 </a>
@@ -184,6 +184,7 @@
  
     <script src="/layout/backend/vendor/jquery/jquery.min.js"></script>
     <script src="/layout/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://unpkg.com/moment@2.22.2/min/moment.min.js"></script>
@@ -192,7 +193,7 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="/layout/backend/js/phong-ban.js"></script>
     <script src="/layout/backend/js/nhan-vien.js"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
