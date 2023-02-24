@@ -82,8 +82,8 @@
                                     <td>
                                         <div class="actions ">
 
-                                            <a href="{{ url('nhanvien/suanv/'.$nv->id)}}" class="btn btn-sm bg-danger-light btn-salary">
-                                                Thêm Bảng Lương
+                                            <a href="{{ url('nhanvien/thongke/'.$nv->id)}}" class="btn btn-sm bg-danger-light btn-salary">
+                                                Thống Kê Lương
                                             </a>
 
                                         </div>

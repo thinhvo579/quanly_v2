@@ -65,4 +65,12 @@ class ChucDanhController extends Controller
         }
     
     }
+    public function querySearchCd(Request $request){
+        //return $request;
+        $chucdanh = ChucDanh::where('ma_chuc_danh', 'LIKE', '%'.$request->mcd.'%')
+        ->where('ten_chuc_danh', 'LIKE', '%'.$request->tencd.'%')
+        ->get();
+
+        return view('chucdanh.cd-search', compact('chucdanh'))->with('i');
+    }
 }

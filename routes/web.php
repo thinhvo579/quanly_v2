@@ -44,21 +44,21 @@ Route::controller(NhanVienController::class)->group(function(){
 
 
 // -----------------------------------------PhongBan-----------------------------------------
-Route::get('/phongban',[PhongBanController::class, 'phongBan']);
-Route::get('/phongban/xempb/{pb}',[PhongBanController::class, 'viewpb'])->name('phongban.xem');
-Route::get('/phongban/suaphongban/{pb}',[PhongBanController::class, 'edit'])->name('phongban.edit');
+Route::get('/phongban',[PhongBanController::class, 'phongBan'])->middleware(checklogout::class);
+Route::get('/phongban/xempb/{pb}',[PhongBanController::class, 'viewpb'])->middleware(checklogout::class)->name('phongban.xem');
+Route::get('/phongban/suaphongban/{pb}',[PhongBanController::class, 'edit'])->middleware(checklogout::class)->name('phongban.edit');
 Route::post('/phongban/suaphongban/{pb}',[PhongBanController::class, 'capnhatpb']);
-Route::get('/phongban/themphongban',[PhongBanController::class, 'addpb']);
-Route::post('/phongban/themphongban', [PhongBanController::class, 'themdsPhongBan'])->name('phongban.them');
+Route::get('/phongban/themphongban',[PhongBanController::class, 'addpb'])->middleware(checklogout::class);
+Route::post('/phongban/themphongban', [PhongBanController::class, 'themdsPhongBan'])->middleware(checklogout::class)->name('phongban.them');
 Route::post('/phongban/xoa-phong-ban/{id}', [PhongBanController::class, 'xoapb']);
 
 // -----------------------------------------NhanVien-----------------------------------------
-Route::get('/nhanvien',[NhanVienController::class, 'nvList'])->name('nhanvien.xem');
-Route::get('/nhanvien/xemnv/{nv}',[NhanVienController::class, 'nvView']);
-Route::post('/nhanvien/xemnv/{nv}',[NhanVienController::class, 'luongNvDetail']);
-Route::get('/nhanvien/suanv/{nv}',[NhanVienController::class, 'nvEdit'])->name('nhanvien.edit');
+Route::get('/nhanvien',[NhanVienController::class, 'nvList'])->middleware(checklogout::class)->name('nhanvien.xem');
+Route::get('/nhanvien/xemnv/{nv}',[NhanVienController::class, 'nvView'])->middleware(checklogout::class);
+Route::post('/nhanvien/xemnv/{nv}',[NhanVienController::class, 'luongNvDetail'])->middleware(checklogout::class);
+Route::get('/nhanvien/suanv/{nv}',[NhanVienController::class, 'nvEdit'])->middleware(checklogout::class)->name('nhanvien.edit');
 Route::post('/nhanvien/suanv/{nv}',[NhanVienController::class, 'nvUpdate']);
-Route::get('/nhanvien/themnv', [NhanVienController::class, 'nvAddView'])->name('nhanvien.them');
+Route::get('/nhanvien/themnv', [NhanVienController::class, 'nvAddView'])->middleware(checklogout::class)->name('nhanvien.them');
 Route::post('/nhanvien/themnv', [NhanVienController::class, 'nvAdd']);
 Route::delete('/nhanvien/xoanv/{id}', [NhanVienController::class, 'nvDelete']);
 Route::post('/nhanvien/cap-nhat-bang-luong/{maNv}',[NhanVienController::class, 'luongNv']);
@@ -67,9 +67,9 @@ Route::get('/nhanvien/bangluong/{id}',[NhanVienController::class, 'getBangLuong'
 Route::get('/nhanvien/nhapluong/{id}',[NhanVienController::class, 'postBangLuong']);
 Route::get('/nhanvien/them-bang-luong/{id}',[NhanVienController::class, 'themBangLuong']);
 // -----------------------------------------ChucDanh-----------------------------------------
-Route::get('/chucdanh',[ChucDanhController::class, 'cdListView']);
-Route::get('/chucdanh/xemcd/{cd}',[ChucDanhController::class, 'cdViewDetail'])->name('chucdanh.xem');
-Route::get('/chucdanh/suacd/{cd}',[ChucDanhController::class, 'cdEdit'])->name('chucdanh.edit');
+Route::get('/chucdanh',[ChucDanhController::class, 'cdListView'])->middleware(checklogout::class);
+Route::get('/chucdanh/xemcd/{cd}',[ChucDanhController::class, 'cdViewDetail'])->name('chucdanh.xem')->middleware(checklogout::class);
+Route::get('/chucdanh/suacd/{cd}',[ChucDanhController::class, 'cdEdit'])->name('chucdanh.edit')->middleware(checklogout::class);
 Route::post('/chucdanh/suacd/{cd}',[ChucDanhController::class, 'cdUpdate']);
 Route::get('/chucdanh/themcd',[ChucDanhController::class, 'cdAddView']);
 Route::post('/chucdanh/themcd', [ChucDanhController::class, 'cdAdd'])->name('chucdanh.them');
@@ -83,4 +83,4 @@ Route::get('/tim-kiem-chuc-danh',[ChucDanhController::class, 'querySearchCd']);
 Route::get('/thongkeluong',[HomeController::class, 'thongKeLuong']);
 Route::get('/thongkeluong1',[HomeController::class, 'thongKeLuong1']);
 // Route::get('/thongkeluong-query',[HomeController::class, 'thongKeLuong']);
-Route::get('/thongkeluongnv',[HomeController::class, 'thongKeLuongNv']);
+Route::get('/nhanvien/thongke/{nv}',[NhanVienController::class, 'thongKeLuongNv']);

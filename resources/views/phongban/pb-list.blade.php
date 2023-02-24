@@ -46,7 +46,9 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
+                
                 <div class="card-body">
+                    <a href="{{asset('phongban/themphongban')}}" class="btn btn-block btn-outline-primary add-new">Thêm Phòng Ban</a>
                     <div class="table-responsive">
                         <table class="datatable table table-stripped" id="myTable">
                             <thead>

@@ -7,10 +7,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-sub-header">
-                    <h3 class="page-title">Welcome Admin!</h3>
+                    <h3 class="page-title">Trang Quản Trị</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Admin</li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">Trang Quản Trị</li>
                     </ul>
                 </div>
             </div>

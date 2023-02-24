@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+<div>
+    @if (session()->has('flash_message'))
+    <p class="flash-message">{{session()->get('flash_message')}}</p>
+    @endif
+</div>
 <div class="page-wrapper">
     <div class="content container-fluid">
 
@@ -9,7 +14,7 @@
                     <div class="page-sub-header">
                         <h3 class="page-title">Chỉnh sửa nhân viên</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="students.html">Nhân viên</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('nhanvien/xemnv/'.$nhanVien->id)}}">Nhân viên</a></li>
                             <li class="breadcrumb-item active">Chỉnh sửa</li>
                         </ul>
                     </div>

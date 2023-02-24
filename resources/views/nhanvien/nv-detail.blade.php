@@ -19,20 +19,21 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="about-info">
+                        <div class="about-info" style="display:flex;justify-content: space-between;    align-items: center;">
                             <h4>Thông tin <span><a href="javascript:;"><i
                                             class="feather-more-vertical"></i></a></span></h4>
+                                            <h4><a href="{{ url('nhanvien/suanv/'.$nv->id)}}" class="btn btn-block btn-outline-primary btn-edit-nv">Chỉnh Sửa</a></h4>
                         </div>
 
                     </div>
                 </div>
                 <div class="row ct-nv">
-                    <div class="col-12">
+                    <div class="col-xl-3 col-md-12">
                         <div class="student-personals-grp">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="heading-detail">
-                                        <h4>Thông tin Nhân Viên :</h4>
+                                        <h4>Thông tin Nhân Viên : </h4>
                                     </div>
 
                                     <div class="personal-activity">
@@ -122,7 +123,7 @@
                         </div>
                         
                     </div>
-                    <div class="col-12">
+                    <div class="col-xl-9 col-md-12">
                             <div class="row">
                                 <div class="col-12 col-sm-12">
                                     <div class="heading-detail " style="margin-top: 20px;">

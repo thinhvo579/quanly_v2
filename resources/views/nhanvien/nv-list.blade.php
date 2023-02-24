@@ -52,7 +52,10 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
+                    <a href="{{asset('nhanvien/themnv')}}" class="btn btn-block btn-outline-primary add-new">Thêm Nhân Viên</a>
                     <div class="table-responsive">
+                        
+                        
                         <table class="datatable table table-stripped" id="myTable">
                             <thead>
                                 <tr>

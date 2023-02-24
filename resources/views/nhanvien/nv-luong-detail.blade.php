@@ -20,114 +20,183 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="about-info">
-                            <h4>Thông tin<span><a href="javascript:;"><i
-                                            class="feather-more-vertical"></i></a></span></h4>
+                            <h4>Thông tin nhân viên<span><a href="javascript:;"><i
+                                            class="feather-more-vertical"></i></a></span>{{$nv->ten_nhan_vien}}</h4>
+                                         
                         </div>
 
                     </div>
                 </div>
+                <div class="row ct-nv">
 
-                    <div class="row">
-                        <div class="col-12 col-sm-12">
-                            <div class="heading-detail">
-                                <h4>Nhập lương</h4>
-                                <span id="nv_code" >{{$nhanVien->ma_nhan_vien}}</span>
-                                
+                    <div class="col-xl-9 col-md-12">
+                            <div class="row">
+                                <div class="col-12 col-sm-12">
+                                    <div class="heading-detail " style="margin-top: 20px;">
+                                        <h4>Thống Kê Lương Hàng Tháng</h4>
+                                        <span id="nv_code" hidden>{{$nv->ma_nhan_vien}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group local-forms select-year">
+                                                <label>Năm</span></label>
+                                                {{-- <input type="text" name="nam" id="year-salary"> --}}
+                                                <select  id="year-salary">
+                                                    @foreach($stats as $row) {
+                                                        
+                                                        <option value="{{$row->nam}}" @php if($row->nam == date("Y")){ echo'selected'; } @endphp>{{$row->nam}}</option>
+                                                       }
+                                                       @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="form-group local-forms year-total">
+                                                
+                                                <h6 id="year_salary"></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row input-number nv-detail-luong">
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 1</span></label>
+                                                <input class="form-control" id="thang1" name="thang1" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 2</span></label>
+                                                <input class="form-control" id="thang2" name="thang2" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 3</span></label>
+                                                <input class="form-control" id="thang3" name="thang3" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 4</span></label>
+                                                <input class="form-control" id="thang4" name="thang4" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 5</span></label>
+                                                <input class="form-control" id="thang5" name="thang5" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 6</span></label>
+                                                <input class="form-control" id="thang6" name="thang6" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 7</span></label>
+                                                <input class="form-control" id="thang7" name="thang7" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 8</span></label>
+                                                <input class="form-control" id="thang8" name="thang8" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 9</span></label>
+                                                <input class="form-control" id="thang9" name="thang9" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 10</span></label>
+                                                <input class="form-control" id="thang10" name="thang10" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 11</span></label>
+                                                <input class="form-control" id="thang11" name="thang11" type="text" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <div class="form-group local-forms">
+                                                <label>Tháng 12</span></label>
+                                                <input class="form-control" id="thang12" name="thang12" type="text" value="">
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                    <!-- Vertical, rounded -->
+
+
+                                    <div class="chartreport">
+                                        <canvas id="chartBar1" class="h-300"></canvas>
+                                        
+                                    </div>
+                                    <div class="heading-detail mt-8" style="margin-top:20px;">
+                                        <h4>Thống Kê Lương Hàng Năm</h4>
+                                       
+                                    </div>
+                                    <div class="chartreport2">
+                                        <canvas id="chartBar2" class="h-300"></canvas>
+                                        
+                                    </div>
+                                    <div>
+
+                                   {{-- {{$stats}} --}}
+                                @php   $year_stt = array(); $total_money = array();
+                                   foreach($stats as $row) {
+                                    $year_stt[] = $row->nam;
+                                   }
+                                   foreach($stats as $row) {
+                                    $total_money[] = $row->total;
+                                   }
+                                   //print_r($year_stt);
+                                   foreach($stats as $row){
+        $data[] = $row;
+    }
+                                   //echo json_encode($data);
+                                   
+@endphp
+                              
+                                        <script>
+                                             var ctx2 = document.getElementById("chartBar2").getContext("2d");
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: @php echo json_encode($year_stt); @endphp,
+      datasets: [
+        {
+          label: "Thống kê lương hàng năm",
+          data: @php echo json_encode($total_money); @endphp,
+          backgroundColor: "#44c4fa",
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true,
+      legend: { display: false, labels: { display: false } },
+      scales: {
+        yAxes: [{ ticks: { beginAtZero: true, fontSize: 10, max: 80 } }],
+        xAxes: [
+          { barPercentage: 0.6, ticks: { beginAtZero: true, fontSize: 11 } },
+        ],
+      },
+    },
+  });
+                                        </script>
+                                    </div>
+                                </div>
                             </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="form-group local-forms select-year">
-                                            <label>Năm</span></label>
-                                            <select name="nam" id="year-salary">
-                                                <option value="2019">2019</option>
-                                                <option value="2020">2020</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" >
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 1</span></label>
-                                            <input class="form-control"id="thang1" name="thang1" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 2</span></label>
-                                            <input class="form-control"id="thang2" name="thang2" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 3</span></label>
-                                            <input class="form-control"id="thang3" name="thang3" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 4</span></label>
-                                            <input class="form-control"id="thang4" name="thang4" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 5</span></label>
-                                            <input class="form-control"id="thang5" name="thang5" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 6</span></label>
-                                            <input class="form-control"id="thang6" name="thang6" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 7</span></label>
-                                            <input class="form-control"id="thang7" name="thang7" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 8</span></label>
-                                            <input class="form-control"id="thang8" name="thang8" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 9</span></label>
-                                            <input class="form-control"id="thang9" name="thang9" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 10</span></label>
-                                            <input class="form-control"id="thang10" name="thang10" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 11</span></label>
-                                            <input class="form-control"id="thang11" name="thang11" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-3">
-                                        <div class="form-group local-forms">
-                                            <label>Tháng 12</span></label>
-                                            <input class="form-control"id="thang12" name="thang12" type="text" value="">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="luong-submit">
-                                    <div class="pb-submit student-submit">
-                                        <button type="submit" class="btn btn-primary">Lưu Bảng Lương</button>
-                                    </div>
-                                </div>
-                            
-                        </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

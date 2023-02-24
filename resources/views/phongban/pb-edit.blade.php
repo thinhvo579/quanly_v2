@@ -8,10 +8,10 @@
             <div class="row align-items-center">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
-                        <h3 class="page-title">Add Students</h3>
+                        <h3 class="page-title">Chỉnh Sửa Phòng Ban</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="students.html">Student</a></li>
-                            <li class="breadcrumb-item active">Add Students</li>
+                            <li class="breadcrumb-item"><a href="{{asset('phongban')}}">Danh Sách Phòng Ban</a></li>
+                            <li class="breadcrumb-item active">Chỉnh Sửa Phòng Ban</li>
                         </ul>
                     </div>
                 </div>

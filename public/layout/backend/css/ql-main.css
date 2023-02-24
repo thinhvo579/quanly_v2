@@ -3,6 +3,17 @@
 /* Vertical */
 .nv-detail-luong{
     display: none;
+}#myTable_filter {
+    display: none;
+}
+.add-new{
+    width: 150px;
+    font-size: 13px;
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    z-index: 11;
+    position: absolute;
 }
 .vertical .progress-bar {
     float: left;
@@ -73,7 +84,9 @@
 body {
     height: 100%;
 }
-
+.btn-edit-nv{
+    font-size: 13px;
+}
 .bg-comman {
     margin-bottom: 20px;
 }
@@ -694,14 +707,12 @@ span.relative svg {}
 .sidebar li a {
     color: #ffffff;
     display: block;
-    font-size: 12px;
     height: auto;
     padding: 0 20px;
 }
 
 .sidebar ul a {
     display: block;
-    font-size: 12px;
     padding: 0px 10px 0px 35px;
     position: relative;
     margin-bottom: 2px;
@@ -725,8 +736,21 @@ span.relative svg {}
 .subdrop:hover {
     text-decoration: none;
 }
-
+.breadcrumb{
+    justify-content: flex-end;
+}
 @media screen and (max-width: 1440px) {
+    .sidebar li a {
+
+        font-size: 12px;
+
+    }
+    
+    .sidebar ul a {
+    
+        font-size: 12px;
+
+    }
     .sidebar-dark .nav-item.active .nav-link {
         font-size: 13px;
     }
@@ -820,9 +844,7 @@ span.relative svg {}
         font-size: 12px;
     }
 
-    #myTable_filter {
-        display: none;
-    }
+    
 
     .message-cd {
         font-size: 12px;
