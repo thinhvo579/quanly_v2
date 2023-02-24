@@ -8,7 +8,7 @@
     @endif
 </div>
 
-<div class="content container-fluid">
+<div class="content container-fluid list-nhan-vien">
     <div class="page-header">
         <div class="row">
             <div class="col">

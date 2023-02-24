@@ -1,6 +1,11 @@
 
 @extends('layouts.master')
 @section('content')
+<div>
+    @if (session()->has('flash_message'))
+    <p class="flash-message">{{session()->get('flash_message')}}</p>
+    @endif
+</div>
 <div class="page-wrapper">
     <div class="content container-fluid">
 
@@ -33,20 +38,20 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Mã Phòng Ban <span class="login-danger">*</span></label>
-                                        <input class="form-control" type="text" id="mapb" name="ma_phong_ban" placeholder="Mã Phòng Ban">
+                                        <input class="form-control" type="text" id="mapb" name="ma_phong_ban" placeholder="Mã Phòng Ban" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Tên Phòng Ban <span class="login-danger">*</span></label>
-                                        <input class="form-control" type="text" id="tenpb" name="ten_phong_ban" placeholder="Tên Phòng Ban">
+                                        <input class="form-control" type="text" id="tenpb" name="ten_phong_ban" placeholder="Tên Phòng Ban" required>
                                     </div>
                                 </div>
                                 
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Số điện thoại </label>
-                                        <input class="form-control" type="text" id="sdtpb" name="sdt_pb" placeholder="Số điện thoại">
+                                        <input class="form-control" type="text" id="sdtpb" name="sdt_pb" placeholder="Số điện thoại" required>
                                     </div>
                                 </div>
                                 

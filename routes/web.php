@@ -10,6 +10,7 @@ use Illuminate\Contracts\Support\JsonableInterface;
 use App\Http\Controllers\PhongBanController;
 use App\Http\Controllers\ChucDanhController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\admin\RegisterUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ use App\Http\Controllers\SearchController;
 
 
 Route::get('/dangnhap',[LoginController::class, 'getLogin'])->name('login')->middleware(checklogin::class);
+Route::get('/taotaikhoan',[RegisterUserController::class, 'Register'])->name('taotaikhoan');
+Route::post('/register',[RegisterUserController::class, 'RegisterAjax'])->name('register');;
 Route::post('/postlogin',[LoginController::class, 'postLogin']);
 Route::get('/logout',[HomeController::class, 'getLogout']);
 

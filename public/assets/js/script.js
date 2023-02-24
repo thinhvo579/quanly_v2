@@ -7,6 +7,10 @@ $(document).ready(function () {
     //       'top' : pTop
     //     });
     //   });
+ 
+    $('.menu-slide').on('click', function(e){
+        $('#wrapper .navbar-nav, #page-top').toggleClass('active');
+    })
     $(".input-number input").keypress(function (e) {
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
             //  $("#errmsg").html("Number Only").stop().show().fadeOut("slow");

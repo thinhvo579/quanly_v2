@@ -30,9 +30,7 @@ class PhongBanController extends Controller
     public function themdsPhongBan(Request $request){
         $usedid = DB::table('table_phong_ban')->where('ma_phong_ban','LIKE', $request->ma_phong_ban)->first();
         if($usedid){
-            return response()->json([
-                'flash_message' => "Mã Phòng Ban đã tồn tại !", "code" => "200"
-            ]);
+            return redirect()->back()->with('flash_message', 'Mã Phòng Ban đã tồn tại!');  
             
         }
         else{

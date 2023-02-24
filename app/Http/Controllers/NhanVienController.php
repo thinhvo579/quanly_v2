@@ -211,6 +211,7 @@ class NhanVienController extends Controller
     }
     public function nvAdd(Request $request)
     {
+        //return $request;
         $current_year = date("Y");
         $usedid = DB::table('table_nhan_vien')->where('ma_nhan_vien', 'LIKE', $request->ma_nhan_vien)->first();
         if ($usedid) {

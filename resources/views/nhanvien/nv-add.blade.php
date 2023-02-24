@@ -21,7 +21,7 @@
             <div class="col-sm-12">
                 <div class="card comman-shadow">
                     <div class="card-body">
-                        <form action="{{ url('nhanvien/themnv/')}}" method="POST">
+                        <form action="{{ url('nhanvien/themnv/')}}" method="POST" class="needs-validation">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
@@ -32,19 +32,20 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Mã Nhân Viên <span class="login-danger">*</span></label>
-                                        <input class="form-control" id="ma_nhan_vien" name="ma_nhan_vien" type="text" value="">
+                                        <input class="form-control" id="ma_nhan_vien" name="ma_nhan_vien" type="text" value="" required>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Tên Nhân Viên <span class="login-danger">*</span></label>
-                                        <input class="form-control" id="ten_nhan_vien" name="ten_nhan_vien" type="text" value="">
+                                        <input class="form-control" id="ten_nhan_vien" name="ten_nhan_vien" type="text" value=""required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Giới tính <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="gioi_tinh" id="gioi_tinh">
+                                        <select class="form-control select" name="gioi_tinh" id="gioi_tinh" required>
                                             <option selected="true" disabled="disabled">Chọn giới tính</option>
                                             <option value="Nam" >Nam</option>
                                             <option value="Nữ">Nữ</option>
@@ -56,14 +57,14 @@
                                     <div class="form-group local-forms calendar-icon">
                                         <label>Ngày sinh<span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" type="text" name="ngay_sinh" id="ngay_sinh"
-                                            placeholder="DD-MM-YYYY" value="">
+                                            placeholder="DD-MM-YYYY" value="" required>
                                     </div>
                                 </div>
                                 
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Phòng ban<span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="ma_phong_ban" id="ma_phong_ban">
+                                        <select class="form-control select" name="ma_phong_ban" id="ma_phong_ban" required>
                                             <option selected="true" disabled="disabled">Chọn Phòng Ban </option>
                                             @foreach ($phongBan as $item)
                                             
@@ -75,7 +76,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Chức Vụ <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="ma_chuc_danh" id="ma_chuc_danh">
+                                        <select class="form-control select" name="ma_chuc_danh" id="ma_chuc_danh" required>
                                             <option selected="true" disabled="disabled">Chọn chức vụ </option>
                                             @foreach ($chucDanh as $item)
                                             
@@ -87,13 +88,13 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Số điện thoại </label>
-                                        <input class="form-control" id="so_dt" name="so_dt" type="text" value="">
+                                        <input class="form-control" id="so_dt" name="so_dt" type="text" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Địa Chỉ <span class="login-danger">*</span></label>
-                                        <input class="form-control"id="dia_chi" name="dia_chi" type="text" value="">
+                                        <input class="form-control"id="dia_chi" name="dia_chi" type="text" value="" required>
                                     </div>
                                 </div>
                                 {{-- <div class="col-12 col-sm-4">

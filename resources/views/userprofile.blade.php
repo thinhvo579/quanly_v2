@@ -44,9 +44,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">Thông Tin</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Password</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="tab-content profile-tab-cont">
@@ -59,9 +59,9 @@
                                 <div class="card-body">
                                     <h5 class="card-title d-flex justify-content-between">
                                         <span>Chi Tiết Quản Trị Viên</span>
-                                        {{-- <a class="edit-link" data-bs-toggle="modal"
-                                            href="#edit_personal_details"><i
-                                                class="far fa-edit me-1"></i>Edit</a> --}}
+                                            {{-- <a class="edit-link" data-bs-toggle="modal"
+                                                href="#edit_personal_details"><i
+                                                    class="far fa-edit me-1"></i>Edit</a> --}}
                                     </h5>
                                     <div class="row">
                                         <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Tên</p>
@@ -92,7 +92,7 @@
                 </div>
 
 
-                <div id="password_tab" class="tab-pane fade">
+                {{-- <div id="password_tab" class="tab-pane fade">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Change Password</h5>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

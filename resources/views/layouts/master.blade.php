@@ -16,6 +16,7 @@
 <script src="{{ URL::to('assets/plugins/chartjs/chart.min.js') }}"></script>
 <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+{{-- <link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar.min.css"> --}}
 <link href="/layout/backend/css/ql-main.css" rel="stylesheet">
 {{-- <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}"> --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -30,7 +31,35 @@
         @include('sidebar.sidebar')
         <!-- End of Sidebar -->
         <div id="content-wrapper" class="d-flex flex-column  col-xl-10 col-md-10">
-
+        <div class="menu-bar-mobile col-12">
+            <div class="menu-mobile-logo"><a href="{{asset('/')}}">QUẢN LÝ</a></div>
+            <div class="menu-mobile-btn">
+                <ul class="menu-mobile-btn-list">
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                            <img class="img-profile rounded-circle"
+                                src="{{Auth::user()->profile_pic}}">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{route('index.hoso')}}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Hồ sơ
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Đăng xuất
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:void(0)" class="menu-slide"><i class="feather-menu"></i></a>
+            </div>
+        </div>   
             <!-- Main Content -->
             <div id="content">
         
@@ -191,9 +220,9 @@
     <script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
-
+    {{-- <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="assets/plugins/fullcalendar/jquery.fullcalendar.js"></script> --}}
+    <script src="{{ URL::to('assets/js/form-validation.js') }}"></script>
     <script src="/layout/backend/js/phong-ban.js"></script>
     <script src="/layout/backend/js/nhan-vien.js"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>

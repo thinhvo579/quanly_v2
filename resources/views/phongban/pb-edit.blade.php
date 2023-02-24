@@ -1,6 +1,11 @@
 
 @extends('layouts.master')
 @section('content')
+<div>
+    @if (session()->has('flash_message'))
+    <p class="flash-message">{{session()->get('flash_message')}}</p>
+    @endif
+</div>
 <div class="page-wrapper">
     <div class="content container-fluid">
 
